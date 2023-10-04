@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace CompSci2023_2024_Jack_Good
 {
-    internal class Shapes
-    {
-    }
 
     public class Circles
     {
-        // constructors
         public double Radius { get; set; }
         public double Area
         {
@@ -21,4 +17,19 @@ namespace CompSci2023_2024_Jack_Good
 
 
     }
+
+    public class Trapezoids
+    {
+        public double Base1 { get; set; }
+        public double Base2 { get; set; }
+        public double Height { get; set; }
+
+        public double Area
+        {
+            get { return ((Base1 + Base2) / 2 * Height); }
+        }
+    }
+
+    public class Elipse
 }
+

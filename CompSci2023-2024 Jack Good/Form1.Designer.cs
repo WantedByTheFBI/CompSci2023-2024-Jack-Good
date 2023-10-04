@@ -29,28 +29,18 @@
         private void InitializeComponent()
         {
             this.Userinput = new System.Windows.Forms.TextBox();
-            this.DisplayShapeArea = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.DisplayShapeArea = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Userinput
             // 
-            this.Userinput.Location = new System.Drawing.Point(12, 12);
+            this.Userinput.Location = new System.Drawing.Point(12, 23);
             this.Userinput.Name = "Userinput";
             this.Userinput.Size = new System.Drawing.Size(125, 27);
             this.Userinput.TabIndex = 0;
             this.Userinput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // DisplayShapeArea
-            // 
-            this.DisplayShapeArea.AutoSize = true;
-            this.DisplayShapeArea.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.DisplayShapeArea.Location = new System.Drawing.Point(68, 79);
-            this.DisplayShapeArea.Name = "DisplayShapeArea";
-            this.DisplayShapeArea.Size = new System.Drawing.Size(215, 20);
-            this.DisplayShapeArea.TabIndex = 1;
-            this.DisplayShapeArea.Text = "[Waiting for shape dimensions]";
             // 
             // button1
             // 
@@ -77,6 +67,17 @@
             this.listBox1.TabIndex = 3;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
+            // DisplayShapeArea
+            // 
+            this.DisplayShapeArea.AutoSize = true;
+            this.DisplayShapeArea.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.DisplayShapeArea.Location = new System.Drawing.Point(169, 82);
+            this.DisplayShapeArea.Name = "DisplayShapeArea";
+            this.DisplayShapeArea.Size = new System.Drawing.Size(215, 20);
+            this.DisplayShapeArea.TabIndex = 1;
+            this.DisplayShapeArea.Text = "[Waiting for shape dimensions]";
+            this.DisplayShapeArea.Click += new System.EventHandler(this.DisplayShapeArea_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -96,8 +97,12 @@
         #endregion
 
         private TextBox Userinput;
-        private Label DisplayShapeArea;
         private Button button1;
         private ListBox listBox1;
+        
+        // This was a textbox in the assignment, however I initially made this a label since I'm used to it
+        // and can make the same end result without retracing all my steps
+
+        private Label DisplayShapeArea;
     }
 }

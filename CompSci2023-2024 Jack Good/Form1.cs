@@ -24,5 +24,10 @@ namespace CompSci2023_2024_Jack_Good
         {
 
         }
+
+        private void DisplayShapeArea_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
