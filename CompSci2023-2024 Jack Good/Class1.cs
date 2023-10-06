@@ -31,5 +31,8 @@ namespace CompSci2023_2024_Jack_Good
     }
 
     public class Elipse
+    {
+
+    }
 }
 
