@@ -45,24 +45,28 @@ namespace CompSci2023_2024_Jack_Good
                     temporaryrectangle.Height = Convert.ToDouble(SecondDimensionInput.Text);
                     DisplayShapeArea.Text = Convert.ToString(temporaryrectangle.Area);
                     break;
-                    
+            }    
         }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string Selecteditem = listBox1.SelectedItem.ToString();
-            switch(Selecteditem)
+            SecondDimensionInput.Visible = false;
+            ThirdDimensionInput.Visible = false;
+            Dimension2.Visible = false;
+            Dimension3.Visible = false;
+            switch (Selecteditem)
             {
                 case "Circle":
-                    Dimension1.Visible = true;
-                    Dimension1.Text = "Radius";
-                    FirstDimensionInput.Visible = true;
-
-                    // making irrelevant boxes invisible
-                    Dimension2.Visible = false;
-                    Dimension3.Visible = false;
-                    SecondDimensionInput.Visible = false;
-                    ThirdDimensionInput.Visible = false;
+                    Circles circle = new Circles();
+                    foreach (string name in circle.UIControls)
+                    {
+                        this.Controls.Find(name, true)[0].Visible = true;
+                        
+                    }
+                    foreach (string[] labelrename  in circle.UINames)
+                    {
+                        this.Controls.Find(labelrename[0], true)[0].Text= labelrename[1];
+                    }
                     break;
 
                 case "Trapezoid":
@@ -94,7 +98,16 @@ namespace CompSci2023_2024_Jack_Good
                     break;
 
                 case "Rectangle":
+                        Dimension1.Visible = true;
+                        Dimension1.Text = "Length";
+                        FirstDimensionInput.Visible = true;
 
+                        Dimension2.Visible = true;
+                        Dimension2.Text = "Width";
+                        SecondDimensionInput.Visible = true;
+                        
+                        Dimension3.Visible = false;
+                        ThirdDimensionInput.Visible = false;
                     break;
 
 
