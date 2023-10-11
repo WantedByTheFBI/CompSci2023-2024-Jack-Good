@@ -32,7 +32,7 @@ namespace CompSci2023_2024_Jack_Good
         //constructors
         public Trapezoids()
         {
-            this.UIControls = new string[] { "FirstDimensionInput", "Dimension1", "SecondDimensionInput", "Dimension2", "ThirdDimensionInput", "Dimension 3"};
+            this.UIControls = new string[] { "FirstDimensionInput", "Dimension1", "SecondDimensionInput", "Dimension2", "ThirdDimensionInput", "Dimension3"};
             this.Base1LabelsName = new string[] { "Dimension1", "Base 1" };
             this.Base2LabelsName = new string[] { "Dimension2", "Base 2" };
             this.HeightLabelsName = new string[] { "Dimension3", "Height"};
@@ -55,6 +55,18 @@ namespace CompSci2023_2024_Jack_Good
 
     public class Elipse
     {
+        //constructors
+        public Elipse()
+        {
+            this.UIControls = new string[] { "FirstDimensionInput", "Dimension1", "SecondDimensionInput", "Dimension2" };
+            this.MajorRadiusLabelsName = new string[] { "Dimension1", "Major Radius" };
+            this.MinorRadiusLabelsName = new string[] { "Dimension2", "Minor Radius" };
+            this.UINames = new string[][] { this.MajorRadiusLabelsName, this.MinorRadiusLabelsName };
+        }
+        public string[] UIControls { get; private set; }
+        public string[] MajorRadiusLabelsName { get; private set; }
+        public string[] MinorRadiusLabelsName { get; private set; }
+        public string[][] UINames { get; private set; }
         public double MajorRadius { get; set;}
         public double MinorRadius { get; set;}
         
@@ -65,6 +77,17 @@ namespace CompSci2023_2024_Jack_Good
     }
     public class Rectangle
     {
+        public Rectangle()
+        {
+            this.UIControls = new string[] { "FirstDimensionInput", "Dimension1", "SecondDimensionInput", "Dimension2" };
+            this.LengthLabelsName = new string[] { "Dimension1", "Length" };
+            this.HeightLabelsName = new string[] { "Dimension2", "Height" };
+            this.UINames = new string[][] { this.LengthLabelsName, this.HeightLabelsName };
+        }
+        public string[] UIControls { get; private set; }
+        public string[] LengthLabelsName { get; private set; }
+        public string[] HeightLabelsName { get; private set; }
+        public string[][] UINames { get; private set; }
         public double Base { get; set; }
         public double Height { get; set; }
 
@@ -74,4 +97,3 @@ namespace CompSci2023_2024_Jack_Good
         }
     }
 }
-

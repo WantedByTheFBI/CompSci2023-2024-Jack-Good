@@ -54,6 +54,7 @@ namespace CompSci2023_2024_Jack_Good
             ThirdDimensionInput.Visible = false;
             Dimension2.Visible = false;
             Dimension3.Visible = false;
+
             switch (Selecteditem)
             {
                 case "Circle":
@@ -70,44 +71,42 @@ namespace CompSci2023_2024_Jack_Good
                     break;
 
                 case "Trapezoid":
-                    Dimension1.Visible = true;
-                    Dimension1.Text = "Base 1";
-                    FirstDimensionInput.Visible = true;
+                    Trapezoids trapezoid = new Trapezoids();
+                    foreach (string name in trapezoid.UIControls)
+                    {
+                        this.Controls.Find(name, true)[0].Visible = true;
 
-                    Dimension2.Visible = true;
-                    Dimension2.Text = "Base 2";
-                    SecondDimensionInput.Visible = true;
-
-                    Dimension3.Visible = true;
-                    Dimension3.Text = "Height";
-                    ThirdDimensionInput.Visible = true;
+                    }
+                    foreach (string[] labelrename in trapezoid.UINames)
+                    {
+                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
+                    }
                     break;
 
                 case "Elipse":
-                    Dimension1.Visible = true;
-                    Dimension1.Text = "Major Radius";
-                    FirstDimensionInput.Visible = true;
+                    Elipse elipse = new Elipse();
+                    foreach (string name in elipse.UIControls)
+                    {
+                        this.Controls.Find(name, true)[0].Visible = true;
 
-                    Dimension2.Visible = true;
-                    Dimension2.Text = "MinorRadius";
-                    SecondDimensionInput.Visible = true;
-
-                    Dimension3.Visible = false;
-                    ThirdDimensionInput.Visible = false;
-                
+                    }
+                    foreach (string[] labelrename in elipse.UINames)
+                    {
+                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
+                    }
                     break;
 
                 case "Rectangle":
-                        Dimension1.Visible = true;
-                        Dimension1.Text = "Length";
-                        FirstDimensionInput.Visible = true;
+                    Rectangle rectangle = new Rectangle();
+                    foreach (string name in rectangle.UIControls)
+                    {
+                        this.Controls.Find(name, true)[0].Visible = true;
 
-                        Dimension2.Visible = true;
-                        Dimension2.Text = "Width";
-                        SecondDimensionInput.Visible = true;
-                        
-                        Dimension3.Visible = false;
-                        ThirdDimensionInput.Visible = false;
+                    }
+                    foreach (string[] labelrename in rectangle.UINames)
+                    {
+                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
+                    }
                     break;
 
 

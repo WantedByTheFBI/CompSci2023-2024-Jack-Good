@@ -122,6 +122,7 @@
             this.SecondDimensionInput.Name = "SecondDimensionInput";
             this.SecondDimensionInput.Size = new System.Drawing.Size(125, 27);
             this.SecondDimensionInput.TabIndex = 6;
+            this.SecondDimensionInput.Visible = false;
             // 
             // Dimension3
             // 
@@ -139,6 +140,7 @@
             this.ThirdDimensionInput.Name = "ThirdDimensionInput";
             this.ThirdDimensionInput.Size = new System.Drawing.Size(125, 27);
             this.ThirdDimensionInput.TabIndex = 8;
+            this.ThirdDimensionInput.Visible = false;
             // 
             // Form1
             // 
