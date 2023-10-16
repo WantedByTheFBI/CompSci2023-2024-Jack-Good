@@ -1,25 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CompSci2023_2024_Jack_Good
 {
-
-    public class Circles
+    public abstract class Shapes
     {
-        //constructor
-        public Circles()
+        public Shapes(Form1 form)
         {
-            this.UIControls = new string[] { "FirstDimensionInput", "Dimension1" };
-            this.RadiusBoxesOn = new string[] { "Dimension1", "Radius" };
-            this.UINames = new string[][] {this.RadiusBoxesOn};
 
         }
-        public string[] UIControls { get; private set; }  
-        public string[] RadiusBoxesOn { get; private set; }
-        public string[][] UINames { get; private set; }
+        public abstract string[] LabelControls { get; }
+        public abstract string[] TextBoxControls { get; }
+        public abstract string[] LabelDimensionNames { get; }
+
+        // switch case is just brought into the shape class
+        void AlterInputControls()
+        {
+            foreach (string name in this.LabelControls)
+            {
+                this.Controls.Find(name, true)[0].Visible = true;
+
+            }
+            foreach (string labelrename in this.LabelDimensionNames)
+            {
+                string namereplace = LabelDimensionNames[public int GetLowerBound(string labelrename[0]);]
+                Form1.Controls.Find(labelrename[0], true)[0].Text = ;
+            }
+            break;
+        }
+    }
+    public class Circles : Shapes
+    {
+        //constructor
+        public Circles(Form1 form) : base(form)
+        {
+
+        }
+        public override string[] LabelControls { get; } = { "Dimension1" };
+
+        // label controls should inherit and be filled in with which labels get turned on
+        // etc with textbox controls
+        // then label names is inherited and filled with the names of the dimensions it needs
         public double Radius { get; set; }
         public double Area
         {

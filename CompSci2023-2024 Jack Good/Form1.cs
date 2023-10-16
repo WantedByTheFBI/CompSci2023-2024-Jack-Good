@@ -1,3 +1,5 @@
+using System.Xml.Linq;
+
 namespace CompSci2023_2024_Jack_Good
 {
     public partial class Form1 : Form
@@ -5,6 +7,10 @@ namespace CompSci2023_2024_Jack_Good
         public Form1()
         {
             InitializeComponent();
+        }
+        public void VisibilitySetter(string name) 
+        {
+            this.Controls.(name, true)[0].Visible = true; 
         }
 
         private void FirstDimesionInputTextChanged(object sender, EventArgs e)
