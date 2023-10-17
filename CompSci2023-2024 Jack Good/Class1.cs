@@ -2,47 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompSci2023_2024_Jack_Good
 {
-    public abstract class Shapes
+    public class Shapes
     {
-        public Shapes(Form1 form)
-        {
-
-        }
-        public abstract string[] LabelControls { get; }
-        public abstract string[] TextBoxControls { get; }
-        public abstract string[] LabelDimensionNames { get; }
+        public string[] LabelControls { get; set; }
+        public string[] TextBoxControls { get; set; }
+        public string[] LabelDimensionNames { get; set; }
+        public string[][] LabelTextToggles { get; set; }
 
         // switch case is just brought into the shape class
-        void AlterInputControls()
-        {
-            foreach (string name in this.LabelControls)
-            {
-                this.Controls.Find(name, true)[0].Visible = true;
-
-            }
-            foreach (string labelrename in this.LabelDimensionNames)
-            {
-                string namereplace = LabelDimensionNames[public int GetLowerBound(string labelrename[0]);]
-                Form1.Controls.Find(labelrename[0], true)[0].Text = ;
-            }
-            break;
-        }
+        
+        
     }
     public class Circles : Shapes
     {
         //constructor
-        public Circles(Form1 form) : base(form)
+        public Circles()
         {
+            this.LabelControls = new string[] { "Dimension1" };
+            this.TextBoxControls = new string[] { "FirstDimensionInput" };
+            this.LabelDimensionNames = new string[] { "Radius" };
+            this.LabelTextToggles = new string[][] { };
+            foreach (string label in LabelControls)
+            {
+                string[] LabelControlNameCombo = { label, LabelDimensionNames[LabelControls.GetLowerBound(string label)] };
+                this.LabelTextToggles.Append(LabelControlNameCombo);
+            }
+              
 
         }
-        public override string[] LabelControls { get; } = { "Dimension1" };
-
         // label controls should inherit and be filled in with which labels get turned on
         // etc with textbox controls
         // then label names is inherited and filled with the names of the dimensions it needs

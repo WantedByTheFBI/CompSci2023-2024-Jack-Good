@@ -8,17 +8,22 @@ namespace CompSci2023_2024_Jack_Good
         {
             InitializeComponent();
         }
-        public void VisibilitySetter(string name) 
+        private void AlterInputControls(Shapes shape)
         {
-            this.Controls.(name, true)[0].Visible = true; 
-        }
+            foreach (string name in shape.LabelControls)
+            {
+                this.Controls.Find(name, true)[0].Visible = true;
 
+            }
+            foreach (string[] labelrename in shape.LabelTextToggles)
+            {
+                this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
+            }
+        }
         private void FirstDimesionInputTextChanged(object sender, EventArgs e)
         {
 
-         
         }
-
         private void Setter_Click(object sender, EventArgs e)
         {
             string Selecteditem = listBox1.SelectedItem.ToString();
@@ -51,7 +56,7 @@ namespace CompSci2023_2024_Jack_Good
                     temporaryrectangle.Height = Convert.ToDouble(SecondDimensionInput.Text);
                     DisplayShapeArea.Text = Convert.ToString(temporaryrectangle.Area);
                     break;
-            }    
+            }
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -68,11 +73,11 @@ namespace CompSci2023_2024_Jack_Good
                     foreach (string name in circle.UIControls)
                     {
                         this.Controls.Find(name, true)[0].Visible = true;
-                        
+
                     }
-                    foreach (string[] labelrename  in circle.UINames)
+                    foreach (string[] labelrename in circle.UINames)
                     {
-                        this.Controls.Find(labelrename[0], true)[0].Text= labelrename[1];
+                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
                     }
                     break;
 
