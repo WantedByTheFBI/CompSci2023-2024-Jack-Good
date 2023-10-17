@@ -28,26 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FirstDimensionInput = new System.Windows.Forms.TextBox();
+            this.DimensionOneTextbox = new System.Windows.Forms.TextBox();
             this.Setter = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ShapeHandlerListBox = new System.Windows.Forms.ListBox();
             this.DisplayShapeArea = new System.Windows.Forms.Label();
             this.AreaTitleLabel = new System.Windows.Forms.Label();
-            this.Dimension1 = new System.Windows.Forms.Label();
-            this.Dimension2 = new System.Windows.Forms.Label();
-            this.SecondDimensionInput = new System.Windows.Forms.TextBox();
-            this.Dimension3 = new System.Windows.Forms.Label();
-            this.ThirdDimensionInput = new System.Windows.Forms.TextBox();
+            this.DimensionOneLabel = new System.Windows.Forms.Label();
+            this.DimensionTwoLabel = new System.Windows.Forms.Label();
+            this.SecondDimensionTextbox = new System.Windows.Forms.TextBox();
+            this.DimensionThreeLabel = new System.Windows.Forms.Label();
+            this.DimensionThreeTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // FirstDimensionInput
+            // DimensionOneTextbox
             // 
-            this.FirstDimensionInput.Location = new System.Drawing.Point(12, 181);
-            this.FirstDimensionInput.Name = "FirstDimensionInput";
-            this.FirstDimensionInput.Size = new System.Drawing.Size(125, 27);
-            this.FirstDimensionInput.TabIndex = 0;
-            this.FirstDimensionInput.Visible = false;
-            this.FirstDimensionInput.TextChanged += new System.EventHandler(this.FirstDimesionInputTextChanged);
+            this.DimensionOneTextbox.Location = new System.Drawing.Point(12, 181);
+            this.DimensionOneTextbox.Name = "DimensionOneTextbox";
+            this.DimensionOneTextbox.Size = new System.Drawing.Size(125, 27);
+            this.DimensionOneTextbox.TabIndex = 0;
+            this.DimensionOneTextbox.Visible = false;
             // 
             // Setter
             // 
@@ -59,20 +58,20 @@
             this.Setter.UseVisualStyleBackColor = true;
             this.Setter.Click += new System.EventHandler(this.Setter_Click);
             // 
-            // listBox1
+            // ShapeHandlerListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Items.AddRange(new object[] {
+            this.ShapeHandlerListBox.FormattingEnabled = true;
+            this.ShapeHandlerListBox.ItemHeight = 20;
+            this.ShapeHandlerListBox.Items.AddRange(new object[] {
             "Circle",
             "Trapezoid",
-            "Elipse",
+            "Ellipse",
             "Rectangle"});
-            this.listBox1.Location = new System.Drawing.Point(12, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(150, 104);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.ShapeHandlerListBox.Location = new System.Drawing.Point(12, 19);
+            this.ShapeHandlerListBox.Name = "ShapeHandlerListBox";
+            this.ShapeHandlerListBox.Size = new System.Drawing.Size(150, 104);
+            this.ShapeHandlerListBox.TabIndex = 3;
+            this.ShapeHandlerListBox.SelectedIndexChanged += new System.EventHandler(this.ShapeHandlerIndexChanged);
             // 
             // DisplayShapeArea
             // 
@@ -83,7 +82,6 @@
             this.DisplayShapeArea.Size = new System.Drawing.Size(215, 20);
             this.DisplayShapeArea.TabIndex = 1;
             this.DisplayShapeArea.Text = "[Waiting for shape dimensions]";
-            this.DisplayShapeArea.Click += new System.EventHandler(this.DisplayShapeArea_Click);
             // 
             // AreaTitleLabel
             // 
@@ -95,68 +93,67 @@
             this.AreaTitleLabel.Text = "Area:";
             this.AreaTitleLabel.UseMnemonic = false;
             // 
-            // Dimension1
+            // DimensionOneLabel
             // 
-            this.Dimension1.AutoSize = true;
-            this.Dimension1.Location = new System.Drawing.Point(25, 158);
-            this.Dimension1.Name = "Dimension1";
-            this.Dimension1.Size = new System.Drawing.Size(92, 20);
-            this.Dimension1.TabIndex = 5;
-            this.Dimension1.Text = "Dimension 1";
-            this.Dimension1.Visible = false;
+            this.DimensionOneLabel.AutoSize = true;
+            this.DimensionOneLabel.Location = new System.Drawing.Point(25, 158);
+            this.DimensionOneLabel.Name = "DimensionOneLabel";
+            this.DimensionOneLabel.Size = new System.Drawing.Size(92, 20);
+            this.DimensionOneLabel.TabIndex = 5;
+            this.DimensionOneLabel.Text = "Dimension 1";
+            this.DimensionOneLabel.Visible = false;
             // 
-            // Dimension2
+            // DimensionTwoLabel
             // 
-            this.Dimension2.AutoSize = true;
-            this.Dimension2.Location = new System.Drawing.Point(180, 158);
-            this.Dimension2.Name = "Dimension2";
-            this.Dimension2.Size = new System.Drawing.Size(92, 20);
-            this.Dimension2.TabIndex = 7;
-            this.Dimension2.Text = "Dimension 2";
-            this.Dimension2.Visible = false;
-            this.Dimension2.Click += new System.EventHandler(this.SecondDimensionInput_Click);
+            this.DimensionTwoLabel.AutoSize = true;
+            this.DimensionTwoLabel.Location = new System.Drawing.Point(180, 158);
+            this.DimensionTwoLabel.Name = "DimensionTwoLabel";
+            this.DimensionTwoLabel.Size = new System.Drawing.Size(92, 20);
+            this.DimensionTwoLabel.TabIndex = 7;
+            this.DimensionTwoLabel.Text = "Dimension 2";
+            this.DimensionTwoLabel.Visible = false;
             // 
-            // SecondDimensionInput
+            // SecondDimensionTextbox
             // 
-            this.SecondDimensionInput.Location = new System.Drawing.Point(160, 181);
-            this.SecondDimensionInput.Name = "SecondDimensionInput";
-            this.SecondDimensionInput.Size = new System.Drawing.Size(125, 27);
-            this.SecondDimensionInput.TabIndex = 6;
-            this.SecondDimensionInput.Visible = false;
+            this.SecondDimensionTextbox.Location = new System.Drawing.Point(160, 181);
+            this.SecondDimensionTextbox.Name = "SecondDimensionTextbox";
+            this.SecondDimensionTextbox.Size = new System.Drawing.Size(125, 27);
+            this.SecondDimensionTextbox.TabIndex = 6;
+            this.SecondDimensionTextbox.Visible = false;
             // 
-            // Dimension3
+            // DimensionThreeLabel
             // 
-            this.Dimension3.AutoSize = true;
-            this.Dimension3.Location = new System.Drawing.Point(328, 158);
-            this.Dimension3.Name = "Dimension3";
-            this.Dimension3.Size = new System.Drawing.Size(88, 20);
-            this.Dimension3.TabIndex = 9;
-            this.Dimension3.Text = "Dimension3";
-            this.Dimension3.Visible = false;
+            this.DimensionThreeLabel.AutoSize = true;
+            this.DimensionThreeLabel.Location = new System.Drawing.Point(328, 158);
+            this.DimensionThreeLabel.Name = "DimensionThreeLabel";
+            this.DimensionThreeLabel.Size = new System.Drawing.Size(88, 20);
+            this.DimensionThreeLabel.TabIndex = 9;
+            this.DimensionThreeLabel.Text = "Dimension 3";
+            this.DimensionThreeLabel.Visible = false;
             // 
-            // ThirdDimensionInput
+            // DimensionThreeTextbox
             // 
-            this.ThirdDimensionInput.Location = new System.Drawing.Point(309, 181);
-            this.ThirdDimensionInput.Name = "ThirdDimensionInput";
-            this.ThirdDimensionInput.Size = new System.Drawing.Size(125, 27);
-            this.ThirdDimensionInput.TabIndex = 8;
-            this.ThirdDimensionInput.Visible = false;
+            this.DimensionThreeTextbox.Location = new System.Drawing.Point(309, 181);
+            this.DimensionThreeTextbox.Name = "DimensionThreeTextbox";
+            this.DimensionThreeTextbox.Size = new System.Drawing.Size(125, 27);
+            this.DimensionThreeTextbox.TabIndex = 8;
+            this.DimensionThreeTextbox.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Dimension3);
-            this.Controls.Add(this.ThirdDimensionInput);
-            this.Controls.Add(this.Dimension2);
-            this.Controls.Add(this.SecondDimensionInput);
-            this.Controls.Add(this.Dimension1);
+            this.Controls.Add(this.DimensionThreeLabel);
+            this.Controls.Add(this.DimensionThreeTextbox);
+            this.Controls.Add(this.DimensionTwoLabel);
+            this.Controls.Add(this.SecondDimensionTextbox);
+            this.Controls.Add(this.DimensionOneLabel);
             this.Controls.Add(this.AreaTitleLabel);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.ShapeHandlerListBox);
             this.Controls.Add(this.Setter);
             this.Controls.Add(this.DisplayShapeArea);
-            this.Controls.Add(this.FirstDimensionInput);
+            this.Controls.Add(this.DimensionOneTextbox);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -166,19 +163,19 @@
 
         #endregion
 
-        private TextBox FirstDimensionInput;
+        private TextBox DimensionOneTextbox;
         private Button Setter;
-        private ListBox listBox1;
+        private ListBox ShapeHandlerListBox;
         
         // This was a textbox in the assignment, however I initially made this a label since I'm used to it
         // and can make the same end result without retracing all my steps
 
         private Label DisplayShapeArea;
         private Label AreaTitleLabel;
-        private Label Dimension1;
-        private Label Dimension2;
-        private TextBox SecondDimensionInput;
-        private Label Dimension3;
-        private TextBox ThirdDimensionInput;
+        private Label DimensionOneLabel;
+        private Label DimensionTwoLabel;
+        private TextBox SecondDimensionTextbox;
+        private Label DimensionThreeLabel;
+        private TextBox DimensionThreeTextbox;
     }
 }

@@ -1,5 +1,3 @@
-using System.Xml.Linq;
-
 namespace CompSci2023_2024_Jack_Good
 {
     public partial class Form1 : Form
@@ -13,126 +11,89 @@ namespace CompSci2023_2024_Jack_Good
             foreach (string name in shape.LabelControls)
             {
                 this.Controls.Find(name, true)[0].Visible = true;
-
             }
             foreach (string[] labelrename in shape.LabelTextToggles)
             {
                 this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
             }
         }
-        private void FirstDimesionInputTextChanged(object sender, EventArgs e)
+        private void TextboxVisibilityToggle(Shapes shape)
         {
-
+            foreach (string name in shape.TextBoxControls)
+            {
+                this.Controls.Find(name, true)[0].Visible = true;
+            }
         }
         private void Setter_Click(object sender, EventArgs e)
         {
-            string Selecteditem = listBox1.SelectedItem.ToString();
+            string Selecteditem = ShapeHandlerListBox.SelectedItem.ToString();
             switch (Selecteditem)
             {
                 case "Circle":
                     Circles temporarycircle = new Circles();
-                    temporarycircle.Radius = Convert.ToDouble(FirstDimensionInput.Text);
+                    temporarycircle.Radius = Convert.ToDouble(DimensionOneTextbox.Text);
                     DisplayShapeArea.Text = Convert.ToString(temporarycircle.Area);
                     break;
 
                 case "Trapezoid":
                     Trapezoids temporarytrapezoid = new Trapezoids();
-                    temporarytrapezoid.Base1 = Convert.ToDouble(FirstDimensionInput.Text);
-                    temporarytrapezoid.Base2 = Convert.ToDouble(SecondDimensionInput.Text);
-                    temporarytrapezoid.Height = Convert.ToDouble(ThirdDimensionInput.Text);
+                    temporarytrapezoid.Base1 = Convert.ToDouble(DimensionOneTextbox.Text);
+                    temporarytrapezoid.Base2 = Convert.ToDouble(SecondDimensionTextbox.Text);
+                    temporarytrapezoid.Height = Convert.ToDouble(DimensionThreeTextbox.Text);
                     DisplayShapeArea.Text = Convert.ToString(temporarytrapezoid.Area);
                     break;
 
-                case "Elipse":
-                    Elipse temporaryelipse = new Elipse();
-                    temporaryelipse.MajorRadius = Convert.ToDouble(FirstDimensionInput.Text);
-                    temporaryelipse.MinorRadius = Convert.ToDouble(SecondDimensionInput.Text);
+                case "Ellipse":
+                    Ellipse temporaryelipse = new Ellipse();
+                    temporaryelipse.MajorRadius = Convert.ToDouble(DimensionOneTextbox.Text);
+                    temporaryelipse.MinorRadius = Convert.ToDouble(SecondDimensionTextbox.Text);
                     DisplayShapeArea.Text = Convert.ToString(temporaryelipse.Area);
                     break;
 
                 case "Rectangle":
                     Rectangle temporaryrectangle = new Rectangle();
-                    temporaryrectangle.Base = Convert.ToDouble(FirstDimensionInput.Text);
-                    temporaryrectangle.Height = Convert.ToDouble(SecondDimensionInput.Text);
+                    temporaryrectangle.Base = Convert.ToDouble(DimensionOneTextbox.Text);
+                    temporaryrectangle.Height = Convert.ToDouble(SecondDimensionTextbox.Text);
                     DisplayShapeArea.Text = Convert.ToString(temporaryrectangle.Area);
                     break;
             }
         }
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ShapeHandlerIndexChanged(object sender, EventArgs e)
         {
-            string Selecteditem = listBox1.SelectedItem.ToString();
-            SecondDimensionInput.Visible = false;
-            ThirdDimensionInput.Visible = false;
-            Dimension2.Visible = false;
-            Dimension3.Visible = false;
+            string Selecteditem = ShapeHandlerListBox.SelectedItem.ToString();
+            SecondDimensionTextbox.Visible = false;
+            DimensionThreeTextbox.Visible = false;
+            DimensionTwoLabel.Visible = false;
+            DimensionThreeLabel.Visible = false;
 
             switch (Selecteditem)
             {
                 case "Circle":
                     Circles circle = new Circles();
-                    foreach (string name in circle.UIControls)
-                    {
-                        this.Controls.Find(name, true)[0].Visible = true;
-
-                    }
-                    foreach (string[] labelrename in circle.UINames)
-                    {
-                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
-                    }
+                    AlterInputControls(circle);
+                    TextboxVisibilityToggle(circle);
                     break;
 
                 case "Trapezoid":
                     Trapezoids trapezoid = new Trapezoids();
-                    foreach (string name in trapezoid.UIControls)
-                    {
-                        this.Controls.Find(name, true)[0].Visible = true;
-
-                    }
-                    foreach (string[] labelrename in trapezoid.UINames)
-                    {
-                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
-                    }
+                    AlterInputControls(trapezoid);
+                    TextboxVisibilityToggle(trapezoid);
                     break;
 
-                case "Elipse":
-                    Elipse elipse = new Elipse();
-                    foreach (string name in elipse.UIControls)
-                    {
-                        this.Controls.Find(name, true)[0].Visible = true;
-
-                    }
-                    foreach (string[] labelrename in elipse.UINames)
-                    {
-                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
-                    }
+                case "Ellipse":
+                    Ellipse ellipse = new Ellipse();
+                    AlterInputControls(ellipse);
+                    TextboxVisibilityToggle(ellipse);
                     break;
 
                 case "Rectangle":
                     Rectangle rectangle = new Rectangle();
-                    foreach (string name in rectangle.UIControls)
-                    {
-                        this.Controls.Find(name, true)[0].Visible = true;
-
-                    }
-                    foreach (string[] labelrename in rectangle.UINames)
-                    {
-                        this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
-                    }
+                    AlterInputControls(rectangle);
+                    TextboxVisibilityToggle(rectangle);
                     break;
 
 
             }
         }
-
-        private void DisplayShapeArea_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SecondDimensionInput_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
