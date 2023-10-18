@@ -6,22 +6,23 @@ namespace CompSci2023_2024_Jack_Good
         {
             InitializeComponent();
         }
-        private void AlterInputControls(Shapes shape)
+        private void ModifyDimensionLabels(Shapes shape)
         {
-            foreach (string name in shape.LabelControls)
+            foreach (string name in shape.RequiredLabels)
             {
                 this.Controls.Find(name, true)[0].Visible = true;
             }
-            foreach (string[] labelrename in shape.LabelTextToggles)
+            for (int i = 0; i < shape.RequiredLabels.Length; i++)
             {
-                this.Controls.Find(labelrename[0], true)[0].Text = labelrename[1];
+                this.Controls.Find(shape.RequiredLabels[i], true)[0].Text = shape.LabelDimensionNames[i];
             }
         }
         private void TextboxVisibilityToggle(Shapes shape)
         {
-            foreach (string name in shape.TextBoxControls)
+            foreach (string name in shape.RequiredTextboxes)
             {
                 this.Controls.Find(name, true)[0].Visible = true;
+                this.Controls.Find(name, true)[0].ResetText();
             }
         }
         private void Setter_Click(object sender, EventArgs e)
@@ -31,30 +32,30 @@ namespace CompSci2023_2024_Jack_Good
             {
                 case "Circle":
                     Circles temporarycircle = new Circles();
-                    temporarycircle.Radius = Convert.ToDouble(DimensionOneTextbox.Text);
-                    DisplayShapeArea.Text = Convert.ToString(temporarycircle.Area);
+                    temporarycircle.Radius = Convert.ToDouble(FirstDimensionTextbox.Text);
+                    AreaDisplayLabel.Text = Convert.ToString(temporarycircle.Area);
                     break;
 
                 case "Trapezoid":
                     Trapezoids temporarytrapezoid = new Trapezoids();
-                    temporarytrapezoid.Base1 = Convert.ToDouble(DimensionOneTextbox.Text);
+                    temporarytrapezoid.Base1 = Convert.ToDouble(FirstDimensionTextbox.Text);
                     temporarytrapezoid.Base2 = Convert.ToDouble(SecondDimensionTextbox.Text);
-                    temporarytrapezoid.Height = Convert.ToDouble(DimensionThreeTextbox.Text);
-                    DisplayShapeArea.Text = Convert.ToString(temporarytrapezoid.Area);
+                    temporarytrapezoid.Height = Convert.ToDouble(ThirdDimensionTextbox.Text);
+                    AreaDisplayLabel.Text = Convert.ToString(temporarytrapezoid.Area);
                     break;
 
                 case "Ellipse":
                     Ellipse temporaryelipse = new Ellipse();
-                    temporaryelipse.MajorRadius = Convert.ToDouble(DimensionOneTextbox.Text);
+                    temporaryelipse.MajorRadius = Convert.ToDouble(FirstDimensionTextbox.Text);
                     temporaryelipse.MinorRadius = Convert.ToDouble(SecondDimensionTextbox.Text);
-                    DisplayShapeArea.Text = Convert.ToString(temporaryelipse.Area);
+                    AreaDisplayLabel.Text = Convert.ToString(temporaryelipse.Area);
                     break;
 
                 case "Rectangle":
                     Rectangle temporaryrectangle = new Rectangle();
-                    temporaryrectangle.Base = Convert.ToDouble(DimensionOneTextbox.Text);
+                    temporaryrectangle.Base = Convert.ToDouble(FirstDimensionTextbox.Text);
                     temporaryrectangle.Height = Convert.ToDouble(SecondDimensionTextbox.Text);
-                    DisplayShapeArea.Text = Convert.ToString(temporaryrectangle.Area);
+                    AreaDisplayLabel.Text = Convert.ToString(temporaryrectangle.Area);
                     break;
             }
         }
@@ -62,7 +63,7 @@ namespace CompSci2023_2024_Jack_Good
         {
             string Selecteditem = ShapeHandlerListBox.SelectedItem.ToString();
             SecondDimensionTextbox.Visible = false;
-            DimensionThreeTextbox.Visible = false;
+            ThirdDimensionTextbox.Visible = false;
             DimensionTwoLabel.Visible = false;
             DimensionThreeLabel.Visible = false;
 
@@ -70,25 +71,25 @@ namespace CompSci2023_2024_Jack_Good
             {
                 case "Circle":
                     Circles circle = new Circles();
-                    AlterInputControls(circle);
+                    ModifyDimensionLabels(circle);
                     TextboxVisibilityToggle(circle);
                     break;
 
                 case "Trapezoid":
                     Trapezoids trapezoid = new Trapezoids();
-                    AlterInputControls(trapezoid);
+                    ModifyDimensionLabels(trapezoid);
                     TextboxVisibilityToggle(trapezoid);
                     break;
 
                 case "Ellipse":
                     Ellipse ellipse = new Ellipse();
-                    AlterInputControls(ellipse);
+                    ModifyDimensionLabels(ellipse);
                     TextboxVisibilityToggle(ellipse);
                     break;
 
                 case "Rectangle":
                     Rectangle rectangle = new Rectangle();
-                    AlterInputControls(rectangle);
+                    ModifyDimensionLabels(rectangle);
                     TextboxVisibilityToggle(rectangle);
                     break;
 

@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DimensionOneTextbox = new System.Windows.Forms.TextBox();
+            this.FirstDimensionTextbox = new System.Windows.Forms.TextBox();
             this.Setter = new System.Windows.Forms.Button();
             this.ShapeHandlerListBox = new System.Windows.Forms.ListBox();
-            this.DisplayShapeArea = new System.Windows.Forms.Label();
-            this.AreaTitleLabel = new System.Windows.Forms.Label();
+            this.AreaDisplayLabel = new System.Windows.Forms.Label();
+            this.AreaLabel = new System.Windows.Forms.Label();
             this.DimensionOneLabel = new System.Windows.Forms.Label();
             this.DimensionTwoLabel = new System.Windows.Forms.Label();
             this.SecondDimensionTextbox = new System.Windows.Forms.TextBox();
             this.DimensionThreeLabel = new System.Windows.Forms.Label();
-            this.DimensionThreeTextbox = new System.Windows.Forms.TextBox();
+            this.ThirdDimensionTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // DimensionOneTextbox
+            // FirstDimensionTextbox
             // 
-            this.DimensionOneTextbox.Location = new System.Drawing.Point(12, 181);
-            this.DimensionOneTextbox.Name = "DimensionOneTextbox";
-            this.DimensionOneTextbox.Size = new System.Drawing.Size(125, 27);
-            this.DimensionOneTextbox.TabIndex = 0;
-            this.DimensionOneTextbox.Visible = false;
+            this.FirstDimensionTextbox.Location = new System.Drawing.Point(12, 181);
+            this.FirstDimensionTextbox.Name = "FirstDimensionTextbox";
+            this.FirstDimensionTextbox.Size = new System.Drawing.Size(125, 27);
+            this.FirstDimensionTextbox.TabIndex = 0;
+            this.FirstDimensionTextbox.Visible = false;
             // 
             // Setter
             // 
@@ -73,26 +73,26 @@
             this.ShapeHandlerListBox.TabIndex = 3;
             this.ShapeHandlerListBox.SelectedIndexChanged += new System.EventHandler(this.ShapeHandlerIndexChanged);
             // 
-            // DisplayShapeArea
+            // AreaDisplayLabel
             // 
-            this.DisplayShapeArea.AutoSize = true;
-            this.DisplayShapeArea.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.DisplayShapeArea.Location = new System.Drawing.Point(520, 181);
-            this.DisplayShapeArea.Name = "DisplayShapeArea";
-            this.DisplayShapeArea.Size = new System.Drawing.Size(215, 20);
-            this.DisplayShapeArea.TabIndex = 1;
-            this.DisplayShapeArea.Text = "[Waiting for shape dimensions]";
+            this.AreaDisplayLabel.AutoSize = true;
+            this.AreaDisplayLabel.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.AreaDisplayLabel.Location = new System.Drawing.Point(520, 181);
+            this.AreaDisplayLabel.Name = "AreaDisplayLabel";
+            this.AreaDisplayLabel.Size = new System.Drawing.Size(215, 20);
+            this.AreaDisplayLabel.TabIndex = 1;
+            this.AreaDisplayLabel.Text = "[Waiting for shape dimensions]";
             // 
-            // AreaTitleLabel
+            // AreaLabel
             // 
-            this.AreaTitleLabel.AutoSize = true;
-            this.AreaTitleLabel.Font = new System.Drawing.Font("Sonic Cut Thru Heavy", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AreaTitleLabel.Location = new System.Drawing.Point(597, 158);
-            this.AreaTitleLabel.Name = "AreaTitleLabel";
-            this.AreaTitleLabel.Size = new System.Drawing.Size(56, 19);
-            this.AreaTitleLabel.TabIndex = 4;
-            this.AreaTitleLabel.Text = "Area:";
-            this.AreaTitleLabel.UseMnemonic = false;
+            this.AreaLabel.AutoSize = true;
+            this.AreaLabel.Font = new System.Drawing.Font("Sonic Cut Thru Heavy", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AreaLabel.Location = new System.Drawing.Point(591, 158);
+            this.AreaLabel.Name = "AreaLabel";
+            this.AreaLabel.Size = new System.Drawing.Size(56, 19);
+            this.AreaLabel.TabIndex = 4;
+            this.AreaLabel.Text = "Area:";
+            this.AreaLabel.UseMnemonic = false;
             // 
             // DimensionOneLabel
             // 
@@ -132,13 +132,13 @@
             this.DimensionThreeLabel.Text = "Dimension 3";
             this.DimensionThreeLabel.Visible = false;
             // 
-            // DimensionThreeTextbox
+            // ThirdDimensionTextbox
             // 
-            this.DimensionThreeTextbox.Location = new System.Drawing.Point(309, 181);
-            this.DimensionThreeTextbox.Name = "DimensionThreeTextbox";
-            this.DimensionThreeTextbox.Size = new System.Drawing.Size(125, 27);
-            this.DimensionThreeTextbox.TabIndex = 8;
-            this.DimensionThreeTextbox.Visible = false;
+            this.ThirdDimensionTextbox.Location = new System.Drawing.Point(309, 181);
+            this.ThirdDimensionTextbox.Name = "ThirdDimensionTextbox";
+            this.ThirdDimensionTextbox.Size = new System.Drawing.Size(125, 27);
+            this.ThirdDimensionTextbox.TabIndex = 8;
+            this.ThirdDimensionTextbox.Visible = false;
             // 
             // Form1
             // 
@@ -146,15 +146,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.DimensionThreeLabel);
-            this.Controls.Add(this.DimensionThreeTextbox);
+            this.Controls.Add(this.ThirdDimensionTextbox);
             this.Controls.Add(this.DimensionTwoLabel);
             this.Controls.Add(this.SecondDimensionTextbox);
             this.Controls.Add(this.DimensionOneLabel);
-            this.Controls.Add(this.AreaTitleLabel);
+            this.Controls.Add(this.AreaLabel);
             this.Controls.Add(this.ShapeHandlerListBox);
             this.Controls.Add(this.Setter);
-            this.Controls.Add(this.DisplayShapeArea);
-            this.Controls.Add(this.DimensionOneTextbox);
+            this.Controls.Add(this.AreaDisplayLabel);
+            this.Controls.Add(this.FirstDimensionTextbox);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -164,19 +164,15 @@
 
         #endregion
 
-        private TextBox DimensionOneTextbox;
+        private TextBox FirstDimensionTextbox;
         private Button Setter;
         private ListBox ShapeHandlerListBox;
-        
-        // This was a textbox in the assignment, however I initially made this a label since I'm used to it
-        // and can make the same end result without retracing all my steps
-
-        private Label DisplayShapeArea;
-        private Label AreaTitleLabel;
+        private Label AreaDisplayLabel;
+        private Label AreaLabel;
         private Label DimensionOneLabel;
         private Label DimensionTwoLabel;
         private TextBox SecondDimensionTextbox;
         private Label DimensionThreeLabel;
-        private TextBox DimensionThreeTextbox;
+        private TextBox ThirdDimensionTextbox;
     }
 }

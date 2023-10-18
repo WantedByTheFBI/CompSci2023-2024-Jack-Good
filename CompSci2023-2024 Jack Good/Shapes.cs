@@ -12,36 +12,22 @@ namespace CompSci2023_2024_Jack_Good
 {
     public class Shapes
     {
-        public string[] LabelControls { get; set; }
-        public string[] TextBoxControls { get; set; }
+        //properties
+        public string[] RequiredLabels { get; set; }
+        public string[] RequiredTextboxes { get; set; }
         public string[] LabelDimensionNames { get; set; }
         public string[][] LabelTextToggles { get; set; }
-        //methods
-        public void FillLabelTextToggles()
-        {
-            for (int i = 0; i < this.LabelControls.Length; i++)
-            {
-                string[] LabelControlNameCombo = { this.LabelControls[i], this.LabelDimensionNames[i] };
-                this.LabelTextToggles.Append(LabelControlNameCombo);
-            }
-        }
-        
-
-    // switch case is just brought into the shape class
-
-
 }
     public class Circles : Shapes
     {
         //constructor
         public Circles()
         {
-            this.LabelControls = new string[] { "DimensionOneLabel" };
-            this.TextBoxControls = new string[] { "DimensionOneTextbox" };
+            this.RequiredLabels = new string[] { "DimensionOneLabel" };
+            this.RequiredTextboxes = new string[] { "FirstDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Radius" };
-            this.LabelTextToggles = new string[][] { };
-            FillLabelTextToggles();
         }
+        //properties
         public double Radius { get; set; }
         //methods
         public double Area
@@ -55,12 +41,11 @@ namespace CompSci2023_2024_Jack_Good
         //constructors
         public Trapezoids()
         {
-            this.LabelControls = new string[] { "DimensionOneLabel", "DimensionTwoLabel", "DimensionThreeLabel" };
-            this.TextBoxControls = new string[] { "DimensionOneTextbox", "SecondDimensionTextbox", "DimensionThreeTextbox" };
+            this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel", "DimensionThreeLabel" };
+            this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox", "ThirdDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Base 1", "Base 2", "Height" };
-            this.LabelTextToggles = new string[][] { };
-            FillLabelTextToggles();
         }
+        //properties
         public double Base1 { get; set; }
         public double Base2 { get; set; }
         public double Height { get; set; }
@@ -76,12 +61,11 @@ namespace CompSci2023_2024_Jack_Good
         //constructors
         public Ellipse()
         {
-            this.LabelControls = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
-            this.TextBoxControls = new string[] { "DimensionOneTextbox", "SecondDimensionTextbox" };
+            this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
+            this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Major Radius", "Minor Radius" };
-            this.LabelTextToggles = new string[][] { };
-            FillLabelTextToggles();
         }
+        //properties
         public double MajorRadius { get; set;}
         public double MinorRadius { get; set;}
         //methods
@@ -95,12 +79,11 @@ namespace CompSci2023_2024_Jack_Good
         //constructors
         public Rectangle()
         {
-            this.LabelControls = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
-            this.TextBoxControls = new string[] { "DimensionOneTextbox", "SecondDimensionTextbox" };
+            this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
+            this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Length", "Height" };
-            this.LabelTextToggles = new string[][] { };
-            FillLabelTextToggles();
         }
+        //properties
         public double Base { get; set; }
         public double Height { get; set; }
         //methods
