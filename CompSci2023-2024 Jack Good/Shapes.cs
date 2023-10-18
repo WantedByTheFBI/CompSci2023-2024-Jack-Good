@@ -10,13 +10,24 @@ using System.Windows.Forms;
 
 namespace CompSci2023_2024_Jack_Good
 {
-    public class Shapes
+    public abstract class Shapes
     {
-        //properties
-        public string[] RequiredLabels { get; set; }
-        public string[] RequiredTextboxes { get; set; }
-        public string[] LabelDimensionNames { get; set; }
-        public string[][] LabelTextToggles { get; set; }
+
+    // properties 
+
+    public abstract double Area { get; }
+    public abstract string[] RequiredLabels { get; set; }
+    public abstract string[] RequiredTextboxes { get; set; }
+    public abstract string[] LabelDimensionNames { get; set; }
+
+    // methods 
+
+    public override string ToString()
+
+    {
+        return GetType().Name;
+    }
+
 }
     public class Circles : Shapes
     {
@@ -27,10 +38,13 @@ namespace CompSci2023_2024_Jack_Good
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Radius" };
         }
+        public override string[] RequiredLabels { get; set; }
+        public override string[] RequiredTextboxes { get; set; }
+        public override string[] LabelDimensionNames { get; set; }
         //properties
         public double Radius { get; set; }
         //methods
-        public double Area
+        public override double Area
         {
             get { return (Math.PI * Math.Pow(this.Radius, 2D)); }
         }
@@ -46,11 +60,14 @@ namespace CompSci2023_2024_Jack_Good
             this.LabelDimensionNames = new string[] { "Base 1", "Base 2", "Height" };
         }
         //properties
+        public override string[] RequiredLabels { get; set; }
+        public override string[] RequiredTextboxes { get; set; }
+        public override string[] LabelDimensionNames { get; set; }
         public double Base1 { get; set; }
         public double Base2 { get; set; }
         public double Height { get; set; }
         //methods
-        public double Area
+        public override double Area
         {
             get { return ((Base1 + Base2) / 2 * Height); }
         }
@@ -66,10 +83,13 @@ namespace CompSci2023_2024_Jack_Good
             this.LabelDimensionNames = new string[] { "Major Radius", "Minor Radius" };
         }
         //properties
+        public override string[] RequiredLabels { get; set; }
+        public override string[] RequiredTextboxes { get; set; }
+        public override string[] LabelDimensionNames { get; set; }
         public double MajorRadius { get; set;}
         public double MinorRadius { get; set;}
         //methods
-        public double Area
+        public override double Area
         {
             get { return (MajorRadius * MinorRadius * Math.PI); }
         }
@@ -84,10 +104,13 @@ namespace CompSci2023_2024_Jack_Good
             this.LabelDimensionNames = new string[] { "Length", "Height" };
         }
         //properties
+        public override string[] RequiredLabels { get; set; }
+        public override string[] RequiredTextboxes { get; set; }
+        public override string[] LabelDimensionNames { get; set; }
         public double Base { get; set; }
         public double Height { get; set; }
         //methods
-        public double Area
+        public override double Area
         {
             get { return (Base * Height); }
         }
