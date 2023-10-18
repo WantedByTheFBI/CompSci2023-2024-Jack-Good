@@ -86,9 +86,10 @@
             // AreaTitleLabel
             // 
             this.AreaTitleLabel.AutoSize = true;
-            this.AreaTitleLabel.Location = new System.Drawing.Point(609, 142);
+            this.AreaTitleLabel.Font = new System.Drawing.Font("Sonic Cut Thru Heavy", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AreaTitleLabel.Location = new System.Drawing.Point(597, 158);
             this.AreaTitleLabel.Name = "AreaTitleLabel";
-            this.AreaTitleLabel.Size = new System.Drawing.Size(43, 20);
+            this.AreaTitleLabel.Size = new System.Drawing.Size(56, 19);
             this.AreaTitleLabel.TabIndex = 4;
             this.AreaTitleLabel.Text = "Area:";
             this.AreaTitleLabel.UseMnemonic = false;
@@ -126,7 +127,7 @@
             this.DimensionThreeLabel.AutoSize = true;
             this.DimensionThreeLabel.Location = new System.Drawing.Point(328, 158);
             this.DimensionThreeLabel.Name = "DimensionThreeLabel";
-            this.DimensionThreeLabel.Size = new System.Drawing.Size(88, 20);
+            this.DimensionThreeLabel.Size = new System.Drawing.Size(92, 20);
             this.DimensionThreeLabel.TabIndex = 9;
             this.DimensionThreeLabel.Text = "Dimension 3";
             this.DimensionThreeLabel.Visible = false;
