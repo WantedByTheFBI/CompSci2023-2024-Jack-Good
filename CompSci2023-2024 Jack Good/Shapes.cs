@@ -38,6 +38,11 @@ namespace CompSci2023_2024_Jack_Good
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Radius" };
         }
+
+        public Circles(double radius) : this()
+        {
+            this.Radius = radius;
+        }
         public override string[] RequiredLabels { get; set; }
         public override string[] RequiredTextboxes { get; set; }
         public override string[] LabelDimensionNames { get; set; }
@@ -58,6 +63,10 @@ namespace CompSci2023_2024_Jack_Good
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel", "DimensionThreeLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox", "ThirdDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Base 1", "Base 2", "Height" };
+        }
+        public Trapezoids(double radius) : this()
+        {
+            this.Radius = radius;
         }
         //properties
         public override string[] RequiredLabels { get; set; }
