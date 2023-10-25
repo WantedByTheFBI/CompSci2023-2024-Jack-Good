@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CompSci2023_2024_Jack_Good
@@ -64,9 +65,11 @@ namespace CompSci2023_2024_Jack_Good
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox", "ThirdDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Base 1", "Base 2", "Height" };
         }
-        public Trapezoids(double radius) : this()
+        public Trapezoids(double base1, double base2, double height) : this()
         {
-            this.Radius = radius;
+            this.Base1 = base1;
+            this.Base2 = base2;
+            this.Height = height;
         }
         //properties
         public override string[] RequiredLabels { get; set; }
@@ -111,6 +114,12 @@ namespace CompSci2023_2024_Jack_Good
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Length", "Height" };
+        }
+
+        public Rectangle(double _base, double height) : this()
+        {
+            this.Base = _base;
+            this.Height = height;
         }
         //properties
         public override string[] RequiredLabels { get; set; }

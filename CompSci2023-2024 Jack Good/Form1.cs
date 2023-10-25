@@ -28,6 +28,13 @@ namespace CompSci2023_2024_Jack_Good
         private void Setter_Click(object sender, EventArgs e)
         {
             string Selecteditem = ShapeHandlerListBox.SelectedItem.ToString();
+            if (FirstDimensionTextbox.Text == "" || SecondDimensionTextbox.Text == "" || ThirdDimensionTextbox.Text == "")
+            {
+                pictureBox1.Visible = true;
+                //Thread.Sleep(300);
+                // pictureBox1.Visible = false;
+                return;
+            }
             switch (Selecteditem)
             {
                 case "Circle":
