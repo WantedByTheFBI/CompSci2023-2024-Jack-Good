@@ -26,28 +26,52 @@ namespace CompSci2023_2024_Jack_Good
                 switch(random.Next(0, 3))
                 {
                     case 0:
-                        shapes[i] = new Circles(random.Next(0,100));
+                        shapes[i] = new Circles(random.Next(1,100));
                         break;
                     case 1:
-                        shapes[i] = new Trapezoids(random.Next(0, 100), random.Next(0, 100), random.Next(0, 100));
+                        shapes[i] = new Trapezoids(random.Next(1, 100), random.Next(1, 100), random.Next(1, 100));
                         break;
                     case 2:
-                        shapes[i] = new Rectangle(random.Next(0, 100), random.Next(0, 100));
+                        shapes[i] = new Rectangles(random.Next(1, 100), random.Next(1, 100));
                         break;
                 }
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ArrayOfShapes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BadCodeClick(object sender, EventArgs e)
         {
-            foreach(Shapes blue in shapes) 
+            foreach(Shapes NamelessShape in shapes) 
             {
-                //kys
+                string TemporaryString = "";
+                TemporaryString += NamelessShape.ToString();
+                switch (NamelessShape.ToString())
+                {
+                    case ("Circles"):
+                        Circles Circle = (Circles)NamelessShape; // casts the shape to a circle so that the system knows it's not just a shape
+                        TemporaryString += " Radius: " + (Circle).Radius.ToString(); 
+                        TemporaryString += " Area: " + (Circle).Area.ToString();
+                        break;
+                    case ("Rectangles"):
+                        Rectangles Rectangle = (Rectangles)NamelessShape; // casts the shape to a rectangle so that the system knows it's not just a shape
+                        TemporaryString += " Base: " + (Rectangle).Base.ToString();
+                        TemporaryString += " Height: " + (Rectangle).Height.ToString();
+                        TemporaryString += " Area: " + (Rectangle).Area.ToString();
+                        break;
+
+                    case ("Trapezoids"):
+                        Trapezoids Trapezoid = (Trapezoids)NamelessShape; // casts the shape to a Trapezoid so that the system knows it's not just a shape
+                        TemporaryString += " Base1: " + (Trapezoid).Base1.ToString();
+                        TemporaryString += " Base2: " + (Trapezoid).Base2.ToString();
+                        TemporaryString += " Height: " + (Trapezoid).Height.ToString();
+                        TemporaryString += " Area: " + (Trapezoid).Area.ToString();
+                        break;
+                }
+                ArrayOfShapeListBox.Items.Add(TemporaryString);
             }
         }
     }

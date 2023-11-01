@@ -106,17 +106,17 @@ namespace CompSci2023_2024_Jack_Good
             get { return (MajorRadius * MinorRadius * Math.PI); }
         }
     }
-    public class Rectangle : Shapes
+    public class Rectangles : Shapes
     {
         //constructors
-        public Rectangle()
+        public Rectangles()
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
             this.LabelDimensionNames = new string[] { "Length", "Height" };
         }
 
-        public Rectangle(double _base, double height) : this()
+        public Rectangles(double _base, double height) : this()
         {
             this.Base = _base;
             this.Height = height;

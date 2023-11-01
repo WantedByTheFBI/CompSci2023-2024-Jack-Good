@@ -69,7 +69,7 @@
             "Circle",
             "Trapezoid",
             "Ellipse",
-            "Rectangle"});
+            "Rectangles"});
             this.ShapeHandlerListBox.Location = new System.Drawing.Point(12, 19);
             this.ShapeHandlerListBox.Name = "ShapeHandlerListBox";
             this.ShapeHandlerListBox.Size = new System.Drawing.Size(150, 104);

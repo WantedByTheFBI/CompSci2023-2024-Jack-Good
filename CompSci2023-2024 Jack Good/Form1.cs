@@ -58,8 +58,8 @@ namespace CompSci2023_2024_Jack_Good
                     AreaDisplayLabel.Text = Convert.ToString(temporaryelipse.Area);
                     break;
 
-                case "Rectangle":
-                    Rectangle temporaryrectangle = new Rectangle();
+                case "Rectangles":
+                    Rectangles temporaryrectangle = new Rectangles();
                     temporaryrectangle.Base = Convert.ToDouble(FirstDimensionTextbox.Text);
                     temporaryrectangle.Height = Convert.ToDouble(SecondDimensionTextbox.Text);
                     AreaDisplayLabel.Text = Convert.ToString(temporaryrectangle.Area);
@@ -94,13 +94,11 @@ namespace CompSci2023_2024_Jack_Good
                     TextboxVisibilityToggle(ellipse);
                     break;
 
-                case "Rectangle":
-                    Rectangle rectangle = new Rectangle();
+                case "Rectangles":
+                    Rectangles rectangle = new Rectangles();
                     ModifyDimensionLabels(rectangle);
                     TextboxVisibilityToggle(rectangle);
                     break;
-
-
             }
         }
     }
