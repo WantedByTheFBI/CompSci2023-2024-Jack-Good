@@ -58,20 +58,28 @@ namespace CompSci2023_2024_Jack_Good
                         break;
                     case ("Rectangles"):
                         Rectangles Rectangle = (Rectangles)NamelessShape; // casts the shape to a rectangle so that the system knows it's not just a shape
-                        TemporaryString += " Base: " + (Rectangle).Base.ToString();
+                        TemporaryString += " Length: " + (Rectangle).Length.ToString();
                         TemporaryString += " Height: " + (Rectangle).Height.ToString();
                         TemporaryString += " Area: " + (Rectangle).Area.ToString();
                         break;
 
                     case ("Trapezoids"):
                         Trapezoids Trapezoid = (Trapezoids)NamelessShape; // casts the shape to a Trapezoid so that the system knows it's not just a shape
-                        TemporaryString += " Base1: " + (Trapezoid).Base1.ToString();
-                        TemporaryString += " Base2: " + (Trapezoid).Base2.ToString();
+                        TemporaryString += " Base1: " + (Trapezoid).Base_1.ToString();
+                        TemporaryString += " Base2: " + (Trapezoid).Base_2.ToString();
                         TemporaryString += " Height: " + (Trapezoid).Height.ToString();
                         TemporaryString += " Area: " + (Trapezoid).Area.ToString();
                         break;
                 }
                 ArrayOfShapeListBox.Items.Add(TemporaryString);
+            }
+        }
+
+        private void GoodCodeButton_Click(object sender, EventArgs e)
+        {
+            foreach (Shapes NamelessShape in shapes)
+            {
+                ArrayOfShapeListBox.Items.Add(NamelessShape.Describe());
             }
         }
     }

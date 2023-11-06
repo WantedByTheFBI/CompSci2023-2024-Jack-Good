@@ -72,6 +72,7 @@
             this.GoodCodeButton.TabIndex = 3;
             this.GoodCodeButton.Text = "Good Code";
             this.GoodCodeButton.UseVisualStyleBackColor = true;
+            this.GoodCodeButton.Click += new System.EventHandler(this.GoodCodeButton_Click);
             // 
             // Form2
             // 

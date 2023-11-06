@@ -45,22 +45,22 @@ namespace CompSci2023_2024_Jack_Good
 
                 case "Trapezoid":
                     Trapezoids temporarytrapezoid = new Trapezoids();
-                    temporarytrapezoid.Base1 = Convert.ToDouble(FirstDimensionTextbox.Text);
-                    temporarytrapezoid.Base2 = Convert.ToDouble(SecondDimensionTextbox.Text);
+                    temporarytrapezoid.Base_1 = Convert.ToDouble(FirstDimensionTextbox.Text);
+                    temporarytrapezoid.Base_2 = Convert.ToDouble(SecondDimensionTextbox.Text);
                     temporarytrapezoid.Height = Convert.ToDouble(ThirdDimensionTextbox.Text);
                     AreaDisplayLabel.Text = Convert.ToString(temporarytrapezoid.Area);
                     break;
 
                 case "Ellipse":
                     Ellipse temporaryelipse = new Ellipse();
-                    temporaryelipse.MajorRadius = Convert.ToDouble(FirstDimensionTextbox.Text);
-                    temporaryelipse.MinorRadius = Convert.ToDouble(SecondDimensionTextbox.Text);
+                    temporaryelipse.Major_Radius = Convert.ToDouble(FirstDimensionTextbox.Text);
+                    temporaryelipse.Minor_Radius = Convert.ToDouble(SecondDimensionTextbox.Text);
                     AreaDisplayLabel.Text = Convert.ToString(temporaryelipse.Area);
                     break;
 
                 case "Rectangles":
                     Rectangles temporaryrectangle = new Rectangles();
-                    temporaryrectangle.Base = Convert.ToDouble(FirstDimensionTextbox.Text);
+                    temporaryrectangle.Length = Convert.ToDouble(FirstDimensionTextbox.Text);
                     temporaryrectangle.Height = Convert.ToDouble(SecondDimensionTextbox.Text);
                     AreaDisplayLabel.Text = Convert.ToString(temporaryrectangle.Area);
                     break;
