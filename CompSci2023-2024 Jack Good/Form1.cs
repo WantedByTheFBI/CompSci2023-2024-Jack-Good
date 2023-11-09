@@ -14,7 +14,7 @@ namespace CompSci2023_2024_Jack_Good
             }
             for (int i = 0; i < shape.RequiredLabels.Length; i++)
             {
-                this.Controls.Find(shape.RequiredLabels[i], true)[0].Text = shape.LabelDimensionNames[i];
+                this.Controls.Find(shape.RequiredLabels[i], true)[0].Text = shape.DimensionNames[i];
             }
         }
         private void TextboxVisibilityToggle(Shapes shape)

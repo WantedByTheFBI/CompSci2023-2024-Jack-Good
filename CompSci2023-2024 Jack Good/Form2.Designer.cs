@@ -32,21 +32,22 @@
             this.GenerateShapes = new System.Windows.Forms.Button();
             this.BadCodeButton = new System.Windows.Forms.Button();
             this.GoodCodeButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // ArrayOfShapeListBox
             // 
             this.ArrayOfShapeListBox.FormattingEnabled = true;
             this.ArrayOfShapeListBox.ItemHeight = 20;
-            this.ArrayOfShapeListBox.Location = new System.Drawing.Point(12, 12);
+            this.ArrayOfShapeListBox.Location = new System.Drawing.Point(12, 47);
             this.ArrayOfShapeListBox.Name = "ArrayOfShapeListBox";
-            this.ArrayOfShapeListBox.Size = new System.Drawing.Size(554, 404);
+            this.ArrayOfShapeListBox.Size = new System.Drawing.Size(519, 404);
             this.ArrayOfShapeListBox.TabIndex = 0;
             this.ArrayOfShapeListBox.SelectedIndexChanged += new System.EventHandler(this.ArrayOfShapes_SelectedIndexChanged);
             // 
             // GenerateShapes
             // 
-            this.GenerateShapes.Location = new System.Drawing.Point(601, 12);
+            this.GenerateShapes.Location = new System.Drawing.Point(12, 12);
             this.GenerateShapes.Name = "GenerateShapes";
             this.GenerateShapes.Size = new System.Drawing.Size(169, 29);
             this.GenerateShapes.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // BadCodeButton
             // 
-            this.BadCodeButton.Location = new System.Drawing.Point(601, 47);
+            this.BadCodeButton.Location = new System.Drawing.Point(187, 12);
             this.BadCodeButton.Name = "BadCodeButton";
             this.BadCodeButton.Size = new System.Drawing.Size(169, 29);
             this.BadCodeButton.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // GoodCodeButton
             // 
-            this.GoodCodeButton.Location = new System.Drawing.Point(601, 82);
+            this.GoodCodeButton.Location = new System.Drawing.Point(362, 12);
             this.GoodCodeButton.Name = "GoodCodeButton";
             this.GoodCodeButton.Size = new System.Drawing.Size(169, 29);
             this.GoodCodeButton.TabIndex = 3;
@@ -74,11 +75,21 @@
             this.GoodCodeButton.UseVisualStyleBackColor = true;
             this.GoodCodeButton.Click += new System.EventHandler(this.GoodCodeButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Location = new System.Drawing.Point(557, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(606, 436);
+            this.panel1.TabIndex = 4;
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1175, 469);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.GoodCodeButton);
             this.Controls.Add(this.BadCodeButton);
             this.Controls.Add(this.GenerateShapes);
@@ -95,5 +106,6 @@
         private Button GenerateShapes;
         private Button BadCodeButton;
         private Button GoodCodeButton;
+        private Panel panel1;
     }
 }

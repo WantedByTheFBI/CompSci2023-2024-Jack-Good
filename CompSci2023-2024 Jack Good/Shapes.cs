@@ -19,28 +19,31 @@ namespace CompSci2023_2024_Jack_Good
         // properties 
 
         public abstract double Area { get; }
-        public abstract string[] RequiredLabels { get; set; }
-        public abstract string[] RequiredTextboxes { get; set; }
-        public abstract string[] LabelDimensionNames { get; set; }
+        public abstract string[] RequiredLabels { get; set; } // Form1: determines which labels need to be visible on for a given shape
+        public abstract string[] RequiredTextboxes { get; set; } // Form1: determines which textboxes need to be turned on
+        public abstract string[] DimensionNames { get; set; }
+        // Form 1: Used to rename the labels with the dimension names required for that shape
+        // Form 2: Used for conveying a given shapes dimensions to the user
 
         // methods 
-        public override string ToString()
+        public override string ToString() //Returns the Shape's child class name, ie: redcircle.ToString(); will return "Circle"
         {
             return GetType().Name;
         }
-        public abstract double[] Dimensions();
-        public string Describe()
+        public abstract double[] Dimensions(); // a list the contains each of the shapes dimensions, overwritten for each shape
+        public string Describe() //returns a string that conveys the type of shape & it's dimensions
         {
             string shapedescription = "";
             shapedescription += this.ToString();
             double[] mydimensions = Dimensions();
-            for (int i = 0; i<this.LabelDimensionNames.Length; i++)
+            for (int i = 0; i<this.DimensionNames.Length; i++)
             {
-                shapedescription += " " + LabelDimensionNames[i] + ": " + mydimensions[i];
+                shapedescription += " " + DimensionNames[i] + ": " + mydimensions[i];
             }
             shapedescription += " Area: " + mydimensions.Last(); 
             return shapedescription;
         }
+        public abstract void Draw(Panel panel, Point point);
     }
     public class Circles : Shapes
     {
@@ -49,7 +52,7 @@ namespace CompSci2023_2024_Jack_Good
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox" };
-            this.LabelDimensionNames = new string[] { "Radius" };
+            this.DimensionNames = new string[] { "Radius" };
         }
 
         public Circles(double radius) : this()
@@ -58,7 +61,7 @@ namespace CompSci2023_2024_Jack_Good
         }
         public override string[] RequiredLabels { get; set; }
         public override string[] RequiredTextboxes { get; set; }
-        public override string[] LabelDimensionNames { get; set; }
+        public override string[] DimensionNames { get; set; }
         //properties
         public double Radius { get; set; }
         //methods
@@ -73,6 +76,12 @@ namespace CompSci2023_2024_Jack_Good
             mydimensions[1] = this.Area;
             return mydimensions;
         }
+        public override void Draw(Panel panel, Point point)
+        {
+            Graphics graphic = panel.CreateGraphics();
+            Pen pen = new Pen(Color.Black, 2);
+            graphic.DrawEllipse(pen, point.X-(int)this.Radius/2, point.Y-(int)this.Radius/2,(float)this.Radius, (float)this.Radius);
+        }
     }
 
     public class Trapezoids : Shapes 
@@ -82,7 +91,7 @@ namespace CompSci2023_2024_Jack_Good
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel", "DimensionThreeLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox", "ThirdDimensionTextbox" };
-            this.LabelDimensionNames = new string[] { "Base_1", "Base_2", "Height" };
+            this.DimensionNames = new string[] { "Base_1", "Base_2", "Height" };
         }
         public Trapezoids(double base1, double base2, double height) : this()
         {
@@ -93,7 +102,7 @@ namespace CompSci2023_2024_Jack_Good
         //properties
         public override string[] RequiredLabels { get; set; }
         public override string[] RequiredTextboxes { get; set; }
-        public override string[] LabelDimensionNames { get; set; }
+        public override string[] DimensionNames { get; set; }
         public double Base_1 { get; set; }
         public double Base_2 { get; set; }
         public double Height { get; set; }
@@ -111,6 +120,10 @@ namespace CompSci2023_2024_Jack_Good
             mydimensions[3] = this.Area;
             return mydimensions;
         }
+        public override void Draw(Panel panel, Point point)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Ellipse : Shapes
@@ -120,12 +133,17 @@ namespace CompSci2023_2024_Jack_Good
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
-            this.LabelDimensionNames = new string[] { "Major_Radius", "Minor_Radius" };
+            this.DimensionNames = new string[] { "Major_Radius", "Minor_Radius" };
+        }
+        public Ellipse(double major_radius, double minor_radius) : this()
+        {
+            this.Major_Radius = major_radius;
+            this.Minor_Radius = minor_radius;
         }
         //properties
         public override string[] RequiredLabels { get; set; }
         public override string[] RequiredTextboxes { get; set; }
-        public override string[] LabelDimensionNames { get; set; }
+        public override string[] DimensionNames { get; set; }
         public double Major_Radius { get; set;}
         public double Minor_Radius { get; set;}
         //methods
@@ -141,6 +159,12 @@ namespace CompSci2023_2024_Jack_Good
             mydimensions[2] = this.Area;
             return mydimensions;
         }
+        public override void Draw(Panel panel, Point point)
+        {
+            Graphics graphic = panel.CreateGraphics();
+            Pen pen = new Pen(Color.Black, 2);
+            graphic.DrawEllipse(pen, point.X-(int)this.Major_Radius / 2, point.Y-(int)this.Minor_Radius / 2, (float)this.Major_Radius, (float)this.Minor_Radius);
+        }
     }
     public class Rectangles : Shapes
     {
@@ -149,7 +173,7 @@ namespace CompSci2023_2024_Jack_Good
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
-            this.LabelDimensionNames = new string[] { "Length", "Height" };
+            this.DimensionNames = new string[] { "Length", "Height" };
         }
 
         public Rectangles(double length, double height) : this()
@@ -160,7 +184,7 @@ namespace CompSci2023_2024_Jack_Good
         //properties
         public override string[] RequiredLabels { get; set; }
         public override string[] RequiredTextboxes { get; set; }
-        public override string[] LabelDimensionNames { get; set; }
+        public override string[] DimensionNames { get; set; }
         public double Length { get; set; }
         public double Height { get; set; }
         //methods
@@ -175,6 +199,12 @@ namespace CompSci2023_2024_Jack_Good
             mydimensions[1] = this.Height;
             mydimensions[2] = this.Area;
             return mydimensions;
+        }
+        public override void Draw(Panel panel, Point point)
+        {
+            Graphics graphic = panel.CreateGraphics();
+            Pen pen = new Pen(Color.Black, 2);
+            graphic.DrawRectangle(pen, point.X-(int)this.Length/2, point.Y-(int)this.Height/2, (float)this.Length, (float)this.Height);
         }
     }
 }

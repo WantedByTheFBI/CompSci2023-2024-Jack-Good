@@ -16,20 +16,23 @@ namespace CompSci2023_2024_Jack_Good
         {
             InitializeComponent();
         }
+        // properties that work best at this level of visibility
         Shapes[] shapes = new Shapes[10];
+        Point point = new Point();
 
+        //form2 methods
         private void GenerateShapes_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            for (int i = 0; i < 10 ; i++)
+            for (int i = 0; i < 10 ; i++) //will run through this for loop 10 times
             {
-                switch(random.Next(0, 3))
+                switch(random.Next(0, 3)) //pseudorandomly decides whether it will be a circle, ellipse or rectangle
                 {
                     case 0:
                         shapes[i] = new Circles(random.Next(1,100));
                         break;
                     case 1:
-                        shapes[i] = new Trapezoids(random.Next(1, 100), random.Next(1, 100), random.Next(1, 100));
+                        shapes[i] = new Ellipse(random.Next(1, 100), random.Next(1, 100));
                         break;
                     case 2:
                         shapes[i] = new Rectangles(random.Next(1, 100), random.Next(1, 100));
@@ -40,12 +43,12 @@ namespace CompSci2023_2024_Jack_Good
 
         private void ArrayOfShapes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void BadCodeClick(object sender, EventArgs e)
         {
-            foreach(Shapes NamelessShape in shapes) 
+            ArrayOfShapeListBox.Items.Clear();
+            foreach (Shapes NamelessShape in shapes) 
             {
                 string TemporaryString = "";
                 TemporaryString += NamelessShape.ToString();
@@ -63,12 +66,11 @@ namespace CompSci2023_2024_Jack_Good
                         TemporaryString += " Area: " + (Rectangle).Area.ToString();
                         break;
 
-                    case ("Trapezoids"):
-                        Trapezoids Trapezoid = (Trapezoids)NamelessShape; // casts the shape to a Trapezoid so that the system knows it's not just a shape
-                        TemporaryString += " Base1: " + (Trapezoid).Base_1.ToString();
-                        TemporaryString += " Base2: " + (Trapezoid).Base_2.ToString();
-                        TemporaryString += " Height: " + (Trapezoid).Height.ToString();
-                        TemporaryString += " Area: " + (Trapezoid).Area.ToString();
+                    case ("Ellipse"):
+                        Ellipse Ellipse = (Ellipse)NamelessShape; // casts the shape to a Ellipse so that the system knows it's not just a shape
+                        TemporaryString += " Base1: " + (Ellipse).Major_Radius.ToString();
+                        TemporaryString += " Base2: " + (Ellipse).Minor_Radius.ToString();
+                        TemporaryString += " Area: " + (Ellipse).Area.ToString();
                         break;
                 }
                 ArrayOfShapeListBox.Items.Add(TemporaryString);
@@ -77,10 +79,19 @@ namespace CompSci2023_2024_Jack_Good
 
         private void GoodCodeButton_Click(object sender, EventArgs e)
         {
+            ArrayOfShapeListBox.Items.Clear();
             foreach (Shapes NamelessShape in shapes)
             {
                 ArrayOfShapeListBox.Items.Add(NamelessShape.Describe());
             }
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs args = (MouseEventArgs)e;
+            point.X = args.Location.X;
+            point.Y = args.Location.Y;
+            shapes[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point);
         }
     }
 }
