@@ -30,7 +30,7 @@ namespace CompSci2023_2024_Jack_Good
         {
             return GetType().Name;
         }
-        public abstract double[] Dimensions(); // a list the contains each of the shapes dimensions, overwritten for each shape
+        public abstract double[] Dimensions(); //returns a list the contains each of the shapes dimensions, overwritten for each shape
         public string Describe() //returns a string that conveys the type of shape & it's dimensions
         {
             string shapedescription = "";
@@ -47,8 +47,8 @@ namespace CompSci2023_2024_Jack_Good
     }
     public class Circles : Shapes
     {
-        //constructor
-        public Circles()
+        //constructors
+        public Circles() //Form1 Relic, defeines necessary controls to make visible and what to change the text off
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox" };
@@ -78,16 +78,16 @@ namespace CompSci2023_2024_Jack_Good
         }
         public override void Draw(Panel panel, Point point)
         {
-            Graphics graphic = panel.CreateGraphics();
+            Graphics graphic = panel.CreateGraphics();  //Necessary for drawing the shapes
             Pen pen = new Pen(Color.Black, 2);
-            graphic.DrawEllipse(pen, point.X-(int)this.Radius/2, point.Y-(int)this.Radius/2,(float)this.Radius, (float)this.Radius);
+            graphic.DrawEllipse(pen, point.X-(int)this.Radius/2, point.Y-(int)this.Radius/2,(float)this.Radius, (float)this.Radius); //To keep the shapes centered on mouse click, it subtracts half the radii from x and y
         }
     }
 
     public class Trapezoids : Shapes 
     {
         //constructors
-        public Trapezoids()
+        public Trapezoids() //defines control related data for Form 1
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel", "DimensionThreeLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox", "ThirdDimensionTextbox" };
@@ -122,14 +122,15 @@ namespace CompSci2023_2024_Jack_Good
         }
         public override void Draw(Panel panel, Point point)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //since this shape isn't being drawn, but it is a part of the parent class,
+                                                 //it just excepts it rather than bricking when this gets called
         }
     }
 
     public class Ellipse : Shapes
     {
         //constructors
-        public Ellipse()
+        public Ellipse() //Form 1 related control data
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel", "DimensionTwoLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox", "SecondDimensionTextbox" };
@@ -159,7 +160,7 @@ namespace CompSci2023_2024_Jack_Good
             mydimensions[2] = this.Area;
             return mydimensions;
         }
-        public override void Draw(Panel panel, Point point)
+        public override void Draw(Panel panel, Point point)//same as circle
         {
             Graphics graphic = panel.CreateGraphics();
             Pen pen = new Pen(Color.Black, 2);

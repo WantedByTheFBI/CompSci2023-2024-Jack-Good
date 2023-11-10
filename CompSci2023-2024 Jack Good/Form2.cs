@@ -50,9 +50,9 @@ namespace CompSci2023_2024_Jack_Good
             ArrayOfShapeListBox.Items.Clear();
             foreach (Shapes NamelessShape in shapes) 
             {
-                string TemporaryString = "";
+                string TemporaryString = ""; //this string lives to add the dimensions to the listbox
                 TemporaryString += NamelessShape.ToString();
-                switch (NamelessShape.ToString())
+                switch (NamelessShape.ToString()) // checks the type of the shape and then points it to do x code if it's y type.
                 {
                     case ("Circles"):
                         Circles Circle = (Circles)NamelessShape; // casts the shape to a circle so that the system knows it's not just a shape
@@ -77,7 +77,7 @@ namespace CompSci2023_2024_Jack_Good
             }
         }
 
-        private void GoodCodeButton_Click(object sender, EventArgs e)
+        private void GoodCodeButton_Click(object sender, EventArgs e) //OOP, has each shape call it's own describe function
         {
             ArrayOfShapeListBox.Items.Clear();
             foreach (Shapes NamelessShape in shapes)
@@ -88,10 +88,15 @@ namespace CompSci2023_2024_Jack_Good
 
         private void panel1_Click(object sender, EventArgs e)
         {
-            MouseEventArgs args = (MouseEventArgs)e;
+            MouseEventArgs args = (MouseEventArgs)e; //casts the triggering click as a mouseevent so we can grab the x and y values
             point.X = args.Location.X;
             point.Y = args.Location.Y;
-            shapes[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point);
+            if(ArrayOfShapeListBox.SelectedIndex != -1) //prevents crashing when no items are in the list
+                //next step is the case where no items are selected
+            {
+                shapes[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point); //has the selected item call it's listbox
+            }
+            
         }
     }
 }
