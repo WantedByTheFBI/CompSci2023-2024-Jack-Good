@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace CompSci2023_2024_Jack_Good
 {
@@ -97,6 +100,88 @@ namespace CompSci2023_2024_Jack_Good
                 shapes[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point); //has the selected item call it's listbox
             }
             
+        }
+
+        private void Save_Shapes_Button_Click(object sender, EventArgs e)
+        {
+            string fileName = null;
+
+            // configure the SaveAs dialog 
+
+            saveFileDialog1.Title = "Save shapes";
+
+            saveFileDialog1.DefaultExt = "shape";  // we'll make up our own file extension 
+
+            saveFileDialog1.Filter = "shape files (*.shapes)|*.shape|All files (*.*)|*.*";
+
+            // show dialog 
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)  // if the user didnt cancel 
+
+            {
+
+                fileName = saveFileDialog1.FileName; // get path & filename from SaveAs dialog 
+
+
+
+                FileStream stream = new FileStream(fileName, FileMode.Create);  // create file and open stream to it 
+
+                StreamWriter writer = new StreamWriter(stream);  // create writer that uses stream 
+
+
+
+                foreach (Shapes shape in shapes)
+
+                {
+
+                    writer.WriteLine(shape.Describe());  // write shape's description string to file 
+
+                }
+
+                writer.Close();  // close writer (commits data to stream) 
+
+                stream.Close();  // close stream when you are done (dont leave files open!) 
+
+
+
+                MessageBox.Show("Saved!");  // inform user save has completed 
+
+            }
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void SeralizeShapes_Click(object sender, EventArgs e)
+        {
+            string fileName = null;
+
+            // configure the SaveAs dialog 
+
+            saveFileDialog1.Title = "Save shapes";
+
+            saveFileDialog1.DefaultExt = "shape";  // we'll make up our own file extension 
+
+            saveFileDialog1.Filter = "shape files (*.shapes)|*.shape|All files (*.*)|*.*";
+
+            // show dialog 
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)  // if the user didnt cancel 
+            {
+                fileName = saveFileDialog1.FileName; // get path & filename from SaveAs dialog  
+
+                FileStream stream = new FileStream(fileName, FileMode.Create);  // create file and open stream to it 
+
+                XmlSerializer ser = new XmlSerializer(typeof(Shapes[]), new Type[] { typeof(Circles), typeof(Rectangles), typeof(Ellipse) });
+
+                ser.Serialize(stream, shapes);
+
+                stream.Close();  // close stream when you are done (dont leave files open!) 
+
+                MessageBox.Show("Saved!");  // inform user save has completed 
+            }
         }
     }
 }

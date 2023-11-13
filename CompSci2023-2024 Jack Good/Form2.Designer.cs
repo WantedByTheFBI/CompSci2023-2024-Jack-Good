@@ -33,15 +33,18 @@
             this.BadCodeButton = new System.Windows.Forms.Button();
             this.GoodCodeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Save_Shapes_Button = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.SeralizeShapes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ArrayOfShapeListBox
             // 
             this.ArrayOfShapeListBox.FormattingEnabled = true;
             this.ArrayOfShapeListBox.ItemHeight = 20;
-            this.ArrayOfShapeListBox.Location = new System.Drawing.Point(12, 47);
+            this.ArrayOfShapeListBox.Location = new System.Drawing.Point(12, 78);
             this.ArrayOfShapeListBox.Name = "ArrayOfShapeListBox";
-            this.ArrayOfShapeListBox.Size = new System.Drawing.Size(519, 404);
+            this.ArrayOfShapeListBox.Size = new System.Drawing.Size(519, 424);
             this.ArrayOfShapeListBox.TabIndex = 0;
             this.ArrayOfShapeListBox.SelectedIndexChanged += new System.EventHandler(this.ArrayOfShapes_SelectedIndexChanged);
             // 
@@ -51,7 +54,7 @@
             this.GenerateShapes.Name = "GenerateShapes";
             this.GenerateShapes.Size = new System.Drawing.Size(169, 29);
             this.GenerateShapes.TabIndex = 1;
-            this.GenerateShapes.Text = "GenerateShapes";
+            this.GenerateShapes.Text = "Generate Shapes";
             this.GenerateShapes.UseVisualStyleBackColor = true;
             this.GenerateShapes.Click += new System.EventHandler(this.GenerateShapes_Click);
             // 
@@ -80,15 +83,41 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Location = new System.Drawing.Point(557, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(606, 436);
+            this.panel1.Size = new System.Drawing.Size(606, 490);
             this.panel1.TabIndex = 4;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // Save_Shapes_Button
+            // 
+            this.Save_Shapes_Button.Location = new System.Drawing.Point(12, 47);
+            this.Save_Shapes_Button.Name = "Save_Shapes_Button";
+            this.Save_Shapes_Button.Size = new System.Drawing.Size(169, 29);
+            this.Save_Shapes_Button.TabIndex = 5;
+            this.Save_Shapes_Button.Text = "Save Shapes";
+            this.Save_Shapes_Button.UseVisualStyleBackColor = true;
+            this.Save_Shapes_Button.Click += new System.EventHandler(this.Save_Shapes_Button_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // SeralizeShapes
+            // 
+            this.SeralizeShapes.Location = new System.Drawing.Point(187, 47);
+            this.SeralizeShapes.Name = "SeralizeShapes";
+            this.SeralizeShapes.Size = new System.Drawing.Size(169, 29);
+            this.SeralizeShapes.TabIndex = 6;
+            this.SeralizeShapes.Text = "Serialize Shapes";
+            this.SeralizeShapes.UseVisualStyleBackColor = true;
+            this.SeralizeShapes.Click += new System.EventHandler(this.SeralizeShapes_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 469);
+            this.ClientSize = new System.Drawing.Size(1175, 514);
+            this.Controls.Add(this.SeralizeShapes);
+            this.Controls.Add(this.Save_Shapes_Button);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GoodCodeButton);
             this.Controls.Add(this.BadCodeButton);
@@ -107,5 +136,8 @@
         private Button BadCodeButton;
         private Button GoodCodeButton;
         private Panel panel1;
+        private Button Save_Shapes_Button;
+        private SaveFileDialog saveFileDialog1;
+        private Button SeralizeShapes;
     }
 }

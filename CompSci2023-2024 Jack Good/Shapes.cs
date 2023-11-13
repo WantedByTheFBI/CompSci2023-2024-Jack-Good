@@ -13,6 +13,7 @@ using Microsoft.VisualBasic;
 
 namespace CompSci2023_2024_Jack_Good
 {
+    [Serializable]
     public abstract class Shapes
     {
 
@@ -45,10 +46,11 @@ namespace CompSci2023_2024_Jack_Good
         }
         public abstract void Draw(Panel panel, Point point);
     }
+    [Serializable]
     public class Circles : Shapes
     {
         //constructors
-        public Circles() //Form1 Relic, defeines necessary controls to make visible and what to change the text off
+        public Circles() //Form1 Relic, defines necessary controls to make visible and what to change the text off
         {
             this.RequiredLabels = new string[] { "DimensionOneLabel" };
             this.RequiredTextboxes = new string[] { "FirstDimensionTextbox" };
@@ -83,7 +85,7 @@ namespace CompSci2023_2024_Jack_Good
             graphic.DrawEllipse(pen, point.X-(int)this.Radius/2, point.Y-(int)this.Radius/2,(float)this.Radius, (float)this.Radius); //To keep the shapes centered on mouse click, it subtracts half the radii from x and y
         }
     }
-
+    [Serializable]
     public class Trapezoids : Shapes 
     {
         //constructors
@@ -126,7 +128,7 @@ namespace CompSci2023_2024_Jack_Good
                                                  //it just excepts it rather than bricking when this gets called
         }
     }
-
+    [Serializable]
     public class Ellipse : Shapes
     {
         //constructors
@@ -167,6 +169,7 @@ namespace CompSci2023_2024_Jack_Good
             graphic.DrawEllipse(pen, point.X-(int)this.Major_Radius / 2, point.Y-(int)this.Minor_Radius / 2, (float)this.Major_Radius, (float)this.Minor_Radius);
         }
     }
+    [Serializable]
     public class Rectangles : Shapes
     {
         //constructors
