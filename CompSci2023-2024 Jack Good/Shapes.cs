@@ -24,14 +24,14 @@ namespace CompSci2023_2024_Jack_Good
         public abstract string[] RequiredTextboxes { get; set; } // Form1: determines which textboxes need to be turned on
         public abstract string[] DimensionNames { get; set; }
         // Form 1: Used to rename the labels with the dimension names required for that shape
-        // Form 2: Used for conveying a given shapes dimensions to the user
+        // Form 2: Used for conveying a given randomshapeslist dimensions to the user
 
         // methods 
         public override string ToString() //Returns the Shape's child class name, ie: redcircle.ToString(); will return "Circle"
         {
             return GetType().Name;
         }
-        public abstract double[] Dimensions(); //returns a list the contains each of the shapes dimensions, overwritten for each shape
+        public abstract double[] Dimensions(); //returns a list the contains each of the randomshapeslist dimensions, overwritten for each shape
         public string Describe() //returns a string that conveys the type of shape & it's dimensions
         {
             string shapedescription = "";
@@ -80,9 +80,9 @@ namespace CompSci2023_2024_Jack_Good
         }
         public override void Draw(Panel panel, Point point)
         {
-            Graphics graphic = panel.CreateGraphics();  //Necessary for drawing the shapes
+            Graphics graphic = panel.CreateGraphics();  //Necessary for drawing the randomshapeslist
             Pen pen = new Pen(Color.Black, 2);
-            graphic.DrawEllipse(pen, point.X-(int)this.Radius/2, point.Y-(int)this.Radius/2,(float)this.Radius, (float)this.Radius); //To keep the shapes centered on mouse click, it subtracts half the radii from x and y
+            graphic.DrawEllipse(pen, point.X-(int)this.Radius/2, point.Y-(int)this.Radius/2,(float)this.Radius, (float)this.Radius); //To keep the randomshapeslist centered on mouse click, it subtracts half the radii from x and y
         }
     }
     [Serializable]

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace CompSci2023_2024_Jack_Good
 {
@@ -20,7 +22,8 @@ namespace CompSci2023_2024_Jack_Good
             InitializeComponent();
         }
         // properties that work best at this level of visibility
-        Shapes[] shapes = new Shapes[10];
+        Shapes[] randomshapeslist = new Shapes[10];
+        Shapes[] loadedshapeslist = new Shapes[10];
         Point point = new Point();
 
         //form2 methods
@@ -32,13 +35,13 @@ namespace CompSci2023_2024_Jack_Good
                 switch(random.Next(0, 3)) //pseudorandomly decides whether it will be a circle, ellipse or rectangle
                 {
                     case 0:
-                        shapes[i] = new Circles(random.Next(1,100));
+                        randomshapeslist[i] = new Circles(random.Next(1,100));
                         break;
                     case 1:
-                        shapes[i] = new Ellipse(random.Next(1, 100), random.Next(1, 100));
+                        randomshapeslist[i] = new Ellipse(random.Next(1, 100), random.Next(1, 100));
                         break;
                     case 2:
-                        shapes[i] = new Rectangles(random.Next(1, 100), random.Next(1, 100));
+                        randomshapeslist[i] = new Rectangles(random.Next(1, 100), random.Next(1, 100));
                         break;
                 }
             }
@@ -51,7 +54,7 @@ namespace CompSci2023_2024_Jack_Good
         private void BadCodeClick(object sender, EventArgs e)
         {
             ArrayOfShapeListBox.Items.Clear();
-            foreach (Shapes NamelessShape in shapes) 
+            foreach (Shapes NamelessShape in randomshapeslist) 
             {
                 string TemporaryString = ""; //this string lives to add the dimensions to the listbox
                 TemporaryString += NamelessShape.ToString();
@@ -83,7 +86,7 @@ namespace CompSci2023_2024_Jack_Good
         private void GoodCodeButton_Click(object sender, EventArgs e) //OOP, has each shape call it's own describe function
         {
             ArrayOfShapeListBox.Items.Clear();
-            foreach (Shapes NamelessShape in shapes)
+            foreach (Shapes NamelessShape in randomshapeslist)
             {
                 ArrayOfShapeListBox.Items.Add(NamelessShape.Describe());
             }
@@ -94,12 +97,15 @@ namespace CompSci2023_2024_Jack_Good
             MouseEventArgs args = (MouseEventArgs)e; //casts the triggering click as a mouseevent so we can grab the x and y values
             point.X = args.Location.X;
             point.Y = args.Location.Y;
-            if(ArrayOfShapeListBox.SelectedIndex != -1) //prevents crashing when no items are in the list
-                //next step is the case where no items are selected
+            if (RandomListToggle.Visible != true & ArrayOfShapeListBox.SelectedIndex != -1)  //prevents crashing when no items are selected
+                                                                                             
             {
-                shapes[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point); //has the selected item call it's listbox
+                randomshapeslist[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point); //has the selected item call it's listbox
             }
-            
+            else if (ListLoadedShapes.SelectedIndex != -1)
+            {
+                loadedshapeslist[ListLoadedShapes.SelectedIndex].Draw(panel1, point);
+            }            
         }
 
         private void Save_Shapes_Button_Click(object sender, EventArgs e)
@@ -108,11 +114,11 @@ namespace CompSci2023_2024_Jack_Good
 
             // configure the SaveAs dialog 
 
-            saveFileDialog1.Title = "Save shapes";
+            saveFileDialog1.Title = "Save randomshapeslist";
 
             saveFileDialog1.DefaultExt = "shape";  // we'll make up our own file extension 
 
-            saveFileDialog1.Filter = "shape files (*.shapes)|*.shape|All files (*.*)|*.*";
+            saveFileDialog1.Filter = "shape files (*.randomshapeslist)|*.shape|All files (*.*)|*.*";
 
             // show dialog 
 
@@ -130,7 +136,7 @@ namespace CompSci2023_2024_Jack_Good
 
 
 
-                foreach (Shapes shape in shapes)
+                foreach (Shapes shape in randomshapeslist)
 
                 {
 
@@ -160,11 +166,11 @@ namespace CompSci2023_2024_Jack_Good
 
             // configure the SaveAs dialog 
 
-            saveFileDialog1.Title = "Save shapes";
+            saveFileDialog1.Title = "Save randomshapeslist";
 
             saveFileDialog1.DefaultExt = "shape";  // we'll make up our own file extension 
 
-            saveFileDialog1.Filter = "shape files (*.shapes)|*.shape|All files (*.*)|*.*";
+            saveFileDialog1.Filter = "shape files (*.randomshapeslist)|*.shape|All files (*.*)|*.*";
 
             // show dialog 
 
@@ -176,12 +182,63 @@ namespace CompSci2023_2024_Jack_Good
 
                 XmlSerializer ser = new XmlSerializer(typeof(Shapes[]), new Type[] { typeof(Circles), typeof(Rectangles), typeof(Ellipse) });
 
-                ser.Serialize(stream, shapes);
+                ser.Serialize(stream, randomshapeslist);
 
                 stream.Close();  // close stream when you are done (dont leave files open!) 
 
                 MessageBox.Show("Saved!");  // inform user save has completed 
             }
+        }
+
+        private void LoadedToggle_Click(object sender, EventArgs e)
+        {
+            LoadedListToggle.Visible = false;
+            RandomListToggle.Visible = true;
+            ListLoadedShapes.Visible = true;
+            ArrayOfShapeListBox.Visible = false;
+        }
+
+        private void RandomListToggle_Click(object sender, EventArgs e)
+        {
+            LoadedListToggle.Visible = true;
+            RandomListToggle.Visible = false;
+            ListLoadedShapes.Visible = false;
+            ArrayOfShapeListBox.Visible = true;
+        }
+
+        private void Load_Shapes_Button_Click(object sender, EventArgs e)
+        {
+
+            // configure the SaveAs dialog
+
+            openFileDialog1.Title = "Open Shapes";
+            openFileDialog1.DefaultExt = "shape";  // only look for the shape file extension 
+            openFileDialog1.Filter = "shape files (*.randomshapeslist)|*.shape|All files (*.*)|*.*";
+            openFileDialog1.ShowDialog();
+            // show dialog 
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)  // if the user didnt cancel 
+            {
+                FileStream stream = new FileStream(openFileDialog1.FileName, FileMode.Open);  // create file and open stream to it 
+
+                XmlSerializer ser = new XmlSerializer(typeof(Shapes[]), new Type[] { typeof(Circles), typeof(Rectangles), typeof(Ellipse) });
+                ser.UnknownNode += new XmlNodeEventHandler(Serializer_UnknownNode);
+                ser.UnknownAttribute += new XmlAttributeEventHandler(Serializer_UnknownAttribute);
+
+                loadedshapeslist = (Shapes[])ser.Deserialize(stream);
+
+                stream.Close();  // close stream when you are done (dont leave files open!) 
+            }
+
+            foreach (Shapes NamelessShape in loadedshapeslist)
+            {
+                ListLoadedShapes.Items.Add(NamelessShape.Describe());
+            }
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
