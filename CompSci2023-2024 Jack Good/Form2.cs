@@ -85,7 +85,7 @@ namespace CompSci2023_2024_Jack_Good
 
         private void GoodCodeButton_Click(object sender, EventArgs e) //OOP, has each shape call it's own describe function
         {
-            ArrayOfShapeListBox.Items.Clear();
+            ArrayOfShapeListBox.Items.Clear(); //clears the items in this listbox
             foreach (Shapes NamelessShape in randomshapeslist)
             {
                 ArrayOfShapeListBox.Items.Add(NamelessShape.Describe());
@@ -97,12 +97,12 @@ namespace CompSci2023_2024_Jack_Good
             MouseEventArgs args = (MouseEventArgs)e; //casts the triggering click as a mouseevent so we can grab the x and y values
             point.X = args.Location.X;
             point.Y = args.Location.Y;
-            if (RandomListToggle.Visible != true & ArrayOfShapeListBox.SelectedIndex != -1)  //prevents crashing when no items are selected
-                                                                                             
+            if (ArrayOfShapeListBox.Visible == true & ArrayOfShapeListBox.SelectedIndex != -1) //checks that the random shapes list is the one being used  
+                // prevents crashing when no items are selected                                                                             
             {
                 randomshapeslist[ArrayOfShapeListBox.SelectedIndex].Draw(panel1, point); //has the selected item call it's listbox
             }
-            else if (ListLoadedShapes.SelectedIndex != -1)
+            else if (ListLoadedShapes.SelectedIndex != -1)  //if the other list isn't being used, and something is selected on this list, draw that item
             {
                 loadedshapeslist[ListLoadedShapes.SelectedIndex].Draw(panel1, point);
             }            
@@ -192,15 +192,15 @@ namespace CompSci2023_2024_Jack_Good
 
         private void LoadedToggle_Click(object sender, EventArgs e)
         {
-            LoadedListToggle.Visible = false;
-            RandomListToggle.Visible = true;
-            ListLoadedShapes.Visible = true;
+            LoadedListToggle.Visible = false; // makes the loaded list button and random list invisible, as both are no longer necessary
+            RandomListToggle.Visible = true;  // while making the loaded list and random button visible, so they can select loaded shapes
+            ListLoadedShapes.Visible = true;  //and then swich back to the other list
             ArrayOfShapeListBox.Visible = false;
         }
 
         private void RandomListToggle_Click(object sender, EventArgs e)
         {
-            LoadedListToggle.Visible = true;
+            LoadedListToggle.Visible = true;  //does the opposite of above loadedtoggle
             RandomListToggle.Visible = false;
             ListLoadedShapes.Visible = false;
             ArrayOfShapeListBox.Visible = true;
@@ -214,7 +214,6 @@ namespace CompSci2023_2024_Jack_Good
             openFileDialog1.Title = "Open Shapes";
             openFileDialog1.DefaultExt = "shape";  // only look for the shape file extension 
             openFileDialog1.Filter = "shape files (*.randomshapeslist)|*.shape|All files (*.*)|*.*";
-            openFileDialog1.ShowDialog();
             // show dialog 
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)  // if the user didnt cancel 
@@ -222,17 +221,19 @@ namespace CompSci2023_2024_Jack_Good
                 FileStream stream = new FileStream(openFileDialog1.FileName, FileMode.Open);  // create file and open stream to it 
 
                 XmlSerializer ser = new XmlSerializer(typeof(Shapes[]), new Type[] { typeof(Circles), typeof(Rectangles), typeof(Ellipse) });
-                ser.UnknownNode += new XmlNodeEventHandler(Serializer_UnknownNode);
-                ser.UnknownAttribute += new XmlAttributeEventHandler(Serializer_UnknownAttribute);
 
-                loadedshapeslist = (Shapes[])ser.Deserialize(stream);
+                    //The following is unfinished code meant to handle any extraneous data from other programs "Shapes" Files
+                //ser.UnknownNode += new XmlNodeEventHandler(Serializer_UnknownNode);
+                //ser.UnknownAttribute += new XmlAttributeEventHandler(Serializer_UnknownAttribute);
 
-                stream.Close();  // close stream when you are done (dont leave files open!) 
-            }
+                loadedshapeslist = (Shapes[])ser.Deserialize(stream); //casts the deserialized data as a list of shapes
 
-            foreach (Shapes NamelessShape in loadedshapeslist)
-            {
-                ListLoadedShapes.Items.Add(NamelessShape.Describe());
+                stream.Close();  // close stream when you are done (dont leave files open!)
+
+                foreach (Shapes NamelessShape in loadedshapeslist)
+                {
+                    ListLoadedShapes.Items.Add(NamelessShape.Describe());
+                }
             }
         }
 
