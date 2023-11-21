@@ -32,6 +32,7 @@
             this.BubbleSortButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.QuickSortButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Generate100Shapesbutton
@@ -73,11 +74,21 @@
             this.QuickSortButton.UseVisualStyleBackColor = true;
             this.QuickSortButton.Click += new System.EventHandler(this.QuickSortButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(122, 261);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.QuickSortButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.BubbleSortButton);
@@ -85,6 +96,7 @@
             this.Name = "Form3";
             this.Text = "Form3";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -94,5 +106,6 @@
         private Button BubbleSortButton;
         private ListBox listBox1;
         private Button QuickSortButton;
+        private Label label1;
     }
 }
