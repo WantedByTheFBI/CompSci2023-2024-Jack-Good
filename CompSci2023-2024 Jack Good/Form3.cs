@@ -36,36 +36,39 @@ namespace CompSci2023_2024_Jack_Good
                 }
                 return (GettingSorted);
             }
+            
             Shapes pivot1 = GettingSorted[0];
-            label1.Text += pivot1.Area;
-            for(int i = 1; i < HundredShapes.Length; i++)
+            for(int i = 1; i < GettingSorted.Length; i++)
             {
-                if (GettingSorted[i].Area < pivot1.Area)
+                if (pivot1.Area > GettingSorted[i].Area)
                 {
-                    for(int x = Array.IndexOf(GettingSorted, pivot1); x < i; x++)
+                    for(int x = i; x > Array.IndexOf(GettingSorted, pivot1); x+= -1)
                     {
                         Shapes tempshape = GettingSorted[x];
-                        GettingSorted[x] = GettingSorted[x+1];
-                        GettingSorted[x+1] = tempshape;
+                        GettingSorted[x] = GettingSorted[x-1];
+                        GettingSorted[x-1] = tempshape;
                     }
                 } 
             }
-            //if (GettingSorted.Length - Array.IndexOf(GettingSorted, pivot1) > 1)
-            //{
-            //    Shapes[] templist = QuickSort(GettingSorted[(Array.IndexOf(GettingSorted, pivot1)+1)..]);
-            //    foreach(Shapes shapes in templist)
-            //    {
-            //        GettingSorted[Array.IndexOf(GettingSorted, pivot1) + 1 + Array.IndexOf(templist, shapes)] = shapes;
-            //    }
-            //}
-            //if(Array.IndexOf(GettingSorted, pivot1) !< 0)
-            //{
-            //   Shapes[] templist = QuickSort(GettingSorted[0..(Array.IndexOf(GettingSorted, pivot1) - 1)]);
-            //    foreach (Shapes shapes in templist)
-            //    {
-            //        GettingSorted[Array.IndexOf(templist, shapes)] = shapes;
-            //    }
-            //}
+
+            // recursive calls
+
+            if (GettingSorted.Length - Array.IndexOf(GettingSorted, pivot1) > 1)
+            {
+                Shapes[] templist = QuickSort(GettingSorted[Array.IndexOf(GettingSorted, pivot1)..]);
+                foreach(Shapes shapes in templist)
+                {
+                    GettingSorted[Array.IndexOf(GettingSorted, pivot1) + Array.IndexOf(templist, shapes)] = shapes;
+                }
+            }
+            if(Array.IndexOf(GettingSorted, pivot1) > 1)
+            {
+               Shapes[] templist = QuickSort(GettingSorted[0..(Array.IndexOf(GettingSorted, pivot1) - 1)]);
+                foreach (Shapes shapes in templist)
+                {
+                    GettingSorted[Array.IndexOf(templist, shapes)] = shapes;
+                }
+            }
             return (GettingSorted);
         }
         private void Generate100Shapesbutton_Click(object sender, EventArgs e)
