@@ -14,11 +14,9 @@ using Microsoft.VisualBasic;
 namespace CompSci2023_2024_Jack_Good
 {
     [Serializable]
-    public abstract class Shapes
+    public abstract class Shapes : IComparable
     {
-
         // properties 
-
         public abstract double Area { get; }
         public abstract string[] RequiredLabels { get; set; } // Form1: determines which labels need to be visible on for a given shape
         public abstract string[] RequiredTextboxes { get; set; } // Form1: determines which textboxes need to be turned on
@@ -27,9 +25,14 @@ namespace CompSci2023_2024_Jack_Good
         // Form 2: Used for conveying a given randomshapeslist dimensions to the user
 
         // methods 
-        public override string ToString() //Returns the Shape's child class name, ie: redcircle.ToString(); will return "Circle"
-        {
-            return GetType().Name;
+        public override string ToString(){ //Returns the Shape's child class name, ie: redcircle.ToString(); will return "Circle"
+            return GetType().Name;}
+        public int CompareTo(object obj){
+
+            Shapes otherShape = obj as Shapes;  // cast the passed object reference into type Shape 
+
+            return this.Area.CompareTo(otherShape.Area); // use native .NET comparison to compare Areas of this shape to passed otherShape 
+
         }
         public abstract double[] Dimensions(); //returns a list the contains each of the randomshapeslist dimensions, overwritten for each shape
         public string Describe() //returns a string that conveys the type of shape & it's dimensions
