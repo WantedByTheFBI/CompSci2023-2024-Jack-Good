@@ -1,9 +1,11 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,8 +20,14 @@ namespace CompSci2023_2024_Jack_Good
         {
             InitializeComponent();
         }
-        Shapes[] HundredShapes = new Shapes[100];
-
+        Shapes[] HundredShapes = new Shapes[1000];
+        public void addtolistbox1(Shapes TempShape)
+        {
+            string NamelessShape = "";
+            NamelessShape += TempShape.ToString();
+            NamelessShape += " with Area: " + TempShape.Area;
+            listBox1.Items.Add(NamelessShape);
+        }
         public Shapes[] QuickSort(Shapes[] GettingSorted)
         {
             if (GettingSorted.Length == 2){ //Quick return for any lists of length 2, skips extra for loops
@@ -31,12 +39,19 @@ namespace CompSci2023_2024_Jack_Good
             
             Shapes pivot1 = GettingSorted[0];
             for(int i = 1; i < GettingSorted.Length; i++){ //everything above the pivot point
-                if (pivot1.Area > GettingSorted[i].Area){
-                    Shapes tempshape2 = GettingSorted[i];
-                    for(int x = i; x > Array.IndexOf(GettingSorted, pivot1); x+= -1) { //goes back from the shape with the larger area and 
-                        Shapes tempshape = GettingSorted[x];                           //individually switches each shape inbetween it and the pivot point
-                        GettingSorted[x] = GettingSorted[x-1];
-                        GettingSorted[x-1] = tempshape;}}}
+                if (pivot1.Area > GettingSorted[i].Area) {
+                    int pivotposition = Array.IndexOf(GettingSorted, pivot1);
+                    if (pivotposition + 1 == i)
+                    {
+                        Shapes tempshape = pivot1;
+                        GettingSorted[pivotposition] = GettingSorted[i];
+                        GettingSorted[i] = tempshape;}
+                    else {
+                        Shapes tempshape = pivot1;
+                        GettingSorted[pivotposition] = GettingSorted[i];
+                        GettingSorted[i] = GettingSorted[pivotposition + 1];
+                        GettingSorted[pivotposition + 1] = tempshape;
+                    }}}
 
             // recursive calls
 
@@ -57,8 +72,8 @@ namespace CompSci2023_2024_Jack_Good
             return (GettingSorted);}
 
         public Shapes[] BubbleSort(Shapes[] GettingSorted) {
-            for (int i = 0; i < 100; i++) {  //for every item from 1 to 100,
-                for (int b = 0; b < 100 - i - 1; b++) { //for every item above I
+            for (int i = 0; i < 1000; i++) {  //for every item from 1 to 100,
+                for (int b = 0; b < 1000 - i - 1; b++) { //for every item above I
                     if (GettingSorted[b].Area > GettingSorted[b + 1].Area) { //switches b and i if b is greater
                         Shapes temp = GettingSorted[b];
                         GettingSorted[b] = GettingSorted[b + 1];
@@ -67,7 +82,7 @@ namespace CompSci2023_2024_Jack_Good
         private void Generate100Shapesbutton_Click(object sender, EventArgs e)
         {
             Random MakeShape = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {   
                 switch(MakeShape.Next(0,3))
                 {
@@ -86,33 +101,42 @@ namespace CompSci2023_2024_Jack_Good
 
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
+            Stopwatch stopwatch = (new Stopwatch());
+
+            stopwatch.Start();
+            Shapes[] middleman = BubbleSort(HundredShapes);
+            stopwatch.Stop();
+            Duration.Text = stopwatch.ElapsedMilliseconds.ToString();
             listBox1.Items.Clear(); //clears the items in this listbox
-            foreach (Shapes NamelessShape in BubbleSort(HundredShapes)){ //adds all the shapes
-                string ShapeArea = "";
-                ShapeArea += NamelessShape.ToString();
-                ShapeArea += " with Area: " + NamelessShape.Area;
-                listBox1.Items.Add(ShapeArea);}
+            foreach (Shapes NamelessShape in middleman){ //adds all the shapes
+                addtolistbox1(NamelessShape);
+            }
         }
         private void QuickSortButton_Click(object sender, EventArgs e){
             listBox1.Items.Clear();
-            foreach (Shapes NamelessShape in QuickSort(HundredShapes))
-            {
-                string ShapeArea = "";
-                ShapeArea += NamelessShape.ToString();
-                ShapeArea += " with Area: " + NamelessShape.Area;
-                listBox1.Items.Add(ShapeArea);}
-        }
+            Stopwatch stopwatch = (new Stopwatch());
 
+            stopwatch.Start();
+            Shapes[] middleman = QuickSort(HundredShapes);
+            stopwatch.Stop();
+            Duration.Text = stopwatch.ElapsedMilliseconds.ToString();
+            foreach (Shapes NamelessShape in middleman){
+                addtolistbox1(NamelessShape);
+            }
+        }
         private void NetSort_Click(object sender, EventArgs e)
         {
+            
+            Stopwatch stopwatch = (new Stopwatch());
+
+            stopwatch.Start();
+            Array.Sort(HundredShapes);
+            stopwatch.Stop();
+            Duration.Text = stopwatch.ElapsedMilliseconds.ToString();
             listBox1.Items.Clear();
             
-            foreach (Shapes NamelessShape in HundredShapes)
-            {
-                string ShapeArea = "";
-                ShapeArea += NamelessShape.ToString();
-                ShapeArea += " with Area: " + NamelessShape.Area;
-                listBox1.Items.Add(ShapeArea);
+            foreach (Shapes NamelessShape in HundredShapes){
+                addtolistbox1(NamelessShape);
             }
         }
     }

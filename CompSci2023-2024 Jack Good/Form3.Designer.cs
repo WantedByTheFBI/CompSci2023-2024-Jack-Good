@@ -33,6 +33,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.QuickSortButton = new System.Windows.Forms.Button();
             this.NetSort = new System.Windows.Forms.Button();
+            this.Duration = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Generate100Shapesbutton
@@ -84,11 +85,21 @@
             this.NetSort.UseVisualStyleBackColor = true;
             this.NetSort.Click += new System.EventHandler(this.NetSort_Click);
             // 
+            // Duration
+            // 
+            this.Duration.AutoSize = true;
+            this.Duration.Location = new System.Drawing.Point(540, 5);
+            this.Duration.Name = "Duration";
+            this.Duration.Size = new System.Drawing.Size(67, 20);
+            this.Duration.TabIndex = 5;
+            this.Duration.Text = "Duration";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Duration);
             this.Controls.Add(this.NetSort);
             this.Controls.Add(this.QuickSortButton);
             this.Controls.Add(this.listBox1);
@@ -97,6 +108,7 @@
             this.Name = "Form3";
             this.Text = "Form3";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -107,5 +119,6 @@
         private ListBox listBox1;
         private Button QuickSortButton;
         private Button NetSort;
+        private Label Duration;
     }
 }
