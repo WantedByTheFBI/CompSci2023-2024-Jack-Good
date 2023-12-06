@@ -30,10 +30,18 @@
         {
             this.Generate100Shapesbutton = new System.Windows.Forms.Button();
             this.BubbleSortButton = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.BubbleSortListBox = new System.Windows.Forms.ListBox();
             this.QuickSortButton = new System.Windows.Forms.Button();
             this.NetSort = new System.Windows.Forms.Button();
-            this.Duration = new System.Windows.Forms.Label();
+            this.BubbleSortTimer = new System.Windows.Forms.Label();
+            this.QuickSortListBox = new System.Windows.Forms.ListBox();
+            this.NETSortListBox = new System.Windows.Forms.ListBox();
+            this.QuickSortTimer = new System.Windows.Forms.Label();
+            this.NetSortTimer = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Generate100Shapesbutton
@@ -56,20 +64,20 @@
             this.BubbleSortButton.UseVisualStyleBackColor = true;
             this.BubbleSortButton.Click += new System.EventHandler(this.BubbleSortButton_Click);
             // 
-            // listBox1
+            // BubbleSortListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(289, 5);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(245, 404);
-            this.listBox1.TabIndex = 2;
+            this.BubbleSortListBox.FormattingEnabled = true;
+            this.BubbleSortListBox.ItemHeight = 20;
+            this.BubbleSortListBox.Location = new System.Drawing.Point(153, 40);
+            this.BubbleSortListBox.Name = "BubbleSortListBox";
+            this.BubbleSortListBox.Size = new System.Drawing.Size(245, 404);
+            this.BubbleSortListBox.TabIndex = 2;
             // 
             // QuickSortButton
             // 
-            this.QuickSortButton.Location = new System.Drawing.Point(12, 40);
+            this.QuickSortButton.Location = new System.Drawing.Point(404, 5);
             this.QuickSortButton.Name = "QuickSortButton";
-            this.QuickSortButton.Size = new System.Drawing.Size(135, 29);
+            this.QuickSortButton.Size = new System.Drawing.Size(118, 29);
             this.QuickSortButton.TabIndex = 3;
             this.QuickSortButton.Text = "Quick Sort";
             this.QuickSortButton.UseVisualStyleBackColor = true;
@@ -77,7 +85,7 @@
             // 
             // NetSort
             // 
-            this.NetSort.Location = new System.Drawing.Point(153, 40);
+            this.NetSort.Location = new System.Drawing.Point(655, 5);
             this.NetSort.Name = "NetSort";
             this.NetSort.Size = new System.Drawing.Size(118, 29);
             this.NetSort.TabIndex = 4;
@@ -85,24 +93,105 @@
             this.NetSort.UseVisualStyleBackColor = true;
             this.NetSort.Click += new System.EventHandler(this.NetSort_Click);
             // 
-            // Duration
+            // BubbleSortTimer
             // 
-            this.Duration.AutoSize = true;
-            this.Duration.Location = new System.Drawing.Point(540, 5);
-            this.Duration.Name = "Duration";
-            this.Duration.Size = new System.Drawing.Size(67, 20);
-            this.Duration.TabIndex = 5;
-            this.Duration.Text = "Duration";
+            this.BubbleSortTimer.AutoSize = true;
+            this.BubbleSortTimer.Location = new System.Drawing.Point(277, 9);
+            this.BubbleSortTimer.Name = "BubbleSortTimer";
+            this.BubbleSortTimer.Size = new System.Drawing.Size(45, 20);
+            this.BubbleSortTimer.TabIndex = 5;
+            this.BubbleSortTimer.Text = "Time:";
+            // 
+            // QuickSortListBox
+            // 
+            this.QuickSortListBox.FormattingEnabled = true;
+            this.QuickSortListBox.ItemHeight = 20;
+            this.QuickSortListBox.Location = new System.Drawing.Point(404, 40);
+            this.QuickSortListBox.Name = "QuickSortListBox";
+            this.QuickSortListBox.Size = new System.Drawing.Size(245, 404);
+            this.QuickSortListBox.TabIndex = 6;
+            // 
+            // NETSortListBox
+            // 
+            this.NETSortListBox.FormattingEnabled = true;
+            this.NETSortListBox.ItemHeight = 20;
+            this.NETSortListBox.Location = new System.Drawing.Point(655, 40);
+            this.NETSortListBox.Name = "NETSortListBox";
+            this.NETSortListBox.Size = new System.Drawing.Size(245, 404);
+            this.NETSortListBox.TabIndex = 7;
+            // 
+            // QuickSortTimer
+            // 
+            this.QuickSortTimer.AutoSize = true;
+            this.QuickSortTimer.Location = new System.Drawing.Point(528, 9);
+            this.QuickSortTimer.Name = "QuickSortTimer";
+            this.QuickSortTimer.Size = new System.Drawing.Size(45, 20);
+            this.QuickSortTimer.TabIndex = 8;
+            this.QuickSortTimer.Text = "Time:";
+            // 
+            // NetSortTimer
+            // 
+            this.NetSortTimer.AutoSize = true;
+            this.NetSortTimer.Location = new System.Drawing.Point(779, 9);
+            this.NetSortTimer.Name = "NetSortTimer";
+            this.NetSortTimer.Size = new System.Drawing.Size(45, 20);
+            this.NetSortTimer.TabIndex = 9;
+            this.NetSortTimer.Text = "Time:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "label1";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(906, 40);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(150, 404);
+            this.listBox1.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1070, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "label2";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(906, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Duration);
+            this.ClientSize = new System.Drawing.Size(1294, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.NetSortTimer);
+            this.Controls.Add(this.QuickSortTimer);
+            this.Controls.Add(this.NETSortListBox);
+            this.Controls.Add(this.QuickSortListBox);
+            this.Controls.Add(this.BubbleSortTimer);
             this.Controls.Add(this.NetSort);
             this.Controls.Add(this.QuickSortButton);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.BubbleSortListBox);
             this.Controls.Add(this.BubbleSortButton);
             this.Controls.Add(this.Generate100Shapesbutton);
             this.Name = "Form3";
@@ -116,9 +205,17 @@
 
         private Button Generate100Shapesbutton;
         private Button BubbleSortButton;
-        private ListBox listBox1;
+        private ListBox BubbleSortListBox;
         private Button QuickSortButton;
         private Button NetSort;
-        private Label Duration;
+        private Label BubbleSortTimer;
+        private ListBox QuickSortListBox;
+        private ListBox NETSortListBox;
+        private Label QuickSortTimer;
+        private Label NetSortTimer;
+        private Label label1;
+        private ListBox listBox1;
+        private Label label2;
+        private Button button1;
     }
 }
