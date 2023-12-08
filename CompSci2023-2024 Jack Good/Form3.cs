@@ -9,7 +9,7 @@ namespace CompSci2023_2024_Jack_Good
         {
             InitializeComponent();
         }
-        Shapes[] HundredShapes = new Shapes[1000];
+        Shapes[] HundredShapes = new Shapes[15];
         Shapes[] QuickHundredShapes = new Shapes[1000];       
         public string addtolistbox(Shapes TempShape)
         {
@@ -56,70 +56,36 @@ namespace CompSci2023_2024_Jack_Good
                 QuickSort(Array.IndexOf(QuickHundredShapes, pivot) + 1, right); // sort |lower than pivot|
             }
         }
-
-        public bool addshapes (Shapes potentialshape)
-        {
-            foreach (Shapes existingshape in HundredShapes) 
-            {if(existingshape == null) { HundredShapes.Append(potentialshape); return true; }
-                if (potentialshape.Area == existingshape.Area)
-                {
-                    return (false);
-                }
-            }
-            HundredShapes.Append(potentialshape);
-            return true;
-        }
         public Shapes[] BubbleSort(Shapes[] GettingSorted) {
-            for (int i = 0; i < GettingSorted.Length; i++) {  //for every item from 1 to 100,
-                for (int b = 0; b < GettingSorted.Length - i - 1; b++) { //for every item above I
-                    if (GettingSorted[b].Area > GettingSorted[b + 1].Area) { //switches b and i, if b is greater
-                        Shapes temp = GettingSorted[b];
-                        GettingSorted[b] = GettingSorted[b + 1];
-                        GettingSorted[(b + 1)] = temp;}}}
-            return(GettingSorted);}
+        for (int i = 0; i < GettingSorted.Length; i++) {  //for every item from 1 to 100,
+            for (int b = 0; b < GettingSorted.Length-1-i; b++) { //for every item above I
+                if (GettingSorted[b-1].Area > GettingSorted[b].Area) { //switches b and i, if b is greater
+                    Shapes temp = GettingSorted[b-1];
+                    GettingSorted[b-1] = GettingSorted[b];
+                    GettingSorted[b] = temp;}}}
+        return(GettingSorted);}
         private void Generate100Shapesbutton_Click(object sender, EventArgs e)
         {
-            Array.Clear(HundredShapes,0,HundredShapes.Length);
+            Array.Clear(HundredShapes, 0, HundredShapes.Length);
             Random MakeShape = new Random();
             int I = 0;
-            //first object added
-            switch (MakeShape.Next(0, 3))
-            {
-                case 0:
-                    HundredShapes[I] = new Circles(MakeShape.Next(1, 100));
-                    I++;
-                    break;
-                case 1:
-                    HundredShapes[I] = new Ellipse(MakeShape.Next(1, 100), MakeShape.Next(1, 100));
-                    I++;
-                    break;
-                case 2:
-                    HundredShapes[I] = new Rectangles(MakeShape.Next(1, 100), MakeShape.Next(1, 100));
-                    I++;
-                    break;
-            }
-            //every object after the first
-            while (I < HundredShapes.Length - 1)
-            {   
-                switch(MakeShape.Next(0,3))
+            while (I < HundredShapes.Length) {
+                switch (MakeShape.Next(0, 3))
                 {
                     case 0:
-                        Circles potentialcircle = new Circles(MakeShape.Next(1, 100));
-                        bool circlewasadded = addshapes(potentialcircle);
-                        if (circlewasadded) { I++; }
+                        HundredShapes[I] = new Circles(MakeShape.Next(1, 500));
+                        I++;
                         break;
                     case 1:
-                        Ellipse potentialellipse = new Ellipse(MakeShape.Next(1, 100), MakeShape.Next(1, 100));
-                        bool ellipsewasadded = addshapes(potentialellipse);
-                        if (ellipsewasadded) { I++; }
+                        HundredShapes[I] = new Ellipse(MakeShape.Next(1, 500), MakeShape.Next(1, 500));
+                        I++;
                         break;
                     case 2:
-                        Rectangles potentialrectangle = new Rectangles(MakeShape.Next(1, 100), MakeShape.Next(1, 100));
-                        bool rectanglewasadded = addshapes(potentialrectangle);
-                        if (rectanglewasadded) { I++; }
+                        HundredShapes[I] = new Rectangles(MakeShape.Next(1, 500), MakeShape.Next(1, 500));
+                        I++;
                         break;
                 }
-            }
+            }  
         }
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
