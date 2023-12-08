@@ -9,8 +9,8 @@ namespace CompSci2023_2024_Jack_Good
         {
             InitializeComponent();
         }
-        Shapes[] HundredShapes = new Shapes[200];
-        Shapes[] QuickHundredShapes = new Shapes[200];
+        Shapes[] HundredShapes = new Shapes[1000];
+        Shapes[] QuickHundredShapes = new Shapes[1000];
         public string addtolistbox(Shapes TempShape)
         {
             string NamelessShape = "";
@@ -37,7 +37,9 @@ namespace CompSci2023_2024_Jack_Good
                 if (leftposition >= rightposition) { break; } // breaks because we have where the pivot slots in
                 else
                 {
-                    QuicksortSwap(leftposition, rightposition);   //left is greater than the pivot and right is lower than, swap them
+                    QuicksortSwap(leftposition, rightposition);
+                    leftposition++;
+                    //left is greater than the pivot and right is lower than, swap them
                 }
             }
             QuicksortSwap(leftposition, FxEndpoint); //swap the midpoint of the list (just higher than the pivot value) with the pivot)
@@ -58,7 +60,7 @@ namespace CompSci2023_2024_Jack_Good
         }
         public Shapes[] BubbleSort(Shapes[] GettingSorted) {
             for (int iterations = 1; iterations < GettingSorted.Length; iterations++) { //How many times that list has been cycled through
-                for (int positioninlist = 0; positioninlist < GettingSorted.Length - iterations ; positioninlist++) { //cycles through the list from 0 to length-cycles
+                for (int positioninlist = 0; positioninlist < GettingSorted.Length - iterations; positioninlist++) { //cycles through the list from 0 to length-cycles
                     if (GettingSorted[positioninlist].Area > GettingSorted[positioninlist + 1].Area) { //switches a number and the number after it, if the former is greater
                     Shapes temp = GettingSorted[positioninlist];
                     GettingSorted[positioninlist] = GettingSorted[positioninlist+1];
